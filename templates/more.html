@@ -119,70 +119,23 @@
                         <h1> <b>Please define your core message</b></h1>
                     </div>
 
-                    <!-- Question table -->
-                    <form action="/generate_feedback" method="post">
-                        <div class="container mt-4 tablecontainer">
-                           
-<table class="table table-bordered table-no-left-border">
-    <tbody>
-        <tr>
-            <td><strong>PROOF - Why should we believe you can do this</strong></td>
-            <td>
-                <textarea class="form-control" rows="4">Partnership with the best women wellness product manufacturers provides good discounts</textarea>
-            </td>
-        </tr>
-        <tr>
-            <td><strong>Proof 2 - if available add testimonials</strong></td>
-            <td>
-                <textarea class="form-control" rows="4">Not yet</textarea>
-            </td>
-        </tr>
-        <tr>
-            <td><strong>PAYOFF - Dramatic Difference (how their life will be better/different)</strong></td>
-            <td>
-                <textarea class="form-control" rows="4">Care-free from periods and pregnancy, no need to go to stores anymore, order online products and get at your door, save time and money</textarea>
-            </td>
-        </tr>
-        <tr>
-            <td><strong>PROFIT (If applicable) - how will this product/service make a profit</strong></td>
-            <td>
-                <textarea class="form-control" rows="4">With minimum delivery charges and profits from products sold</textarea>
-            </td>
-        </tr>
-        <tr>
-            <td><strong>PASSION - Why are you excited about this</strong></td>
-            <td>
-                <textarea class="form-control" rows="4">Right now there isn't any solution like this in my country</textarea>
-            </td>
-        </tr>
-    </tbody>
-</table>
-                            <button class="btn btn-primary" type="submit">Generate Feedback</button>
+                    <ol class="list-unstyled">
+                        <li>Review your script, then go to - Get your free AI Pitch Review (thecyclesbook.com)</li>
+                        <li>Make your pitch in other formats</li>
+                        <ol>
+                            <li>Pecha Kucha</li>
+                            <li>The Problem-Solution Pitch</li>
+                            <li>The Storytelling Pitch</li>
+                            <li>The Elevator Pitch</li>
+                        </ol>
+                        <li>How to make a pitch deck fast</li>
+                    </ol>
+                         
                         </div>
                     </form>
-                    <h3><strong>Is the purpose of your pitch clear?</strong></h3>
+                   
                     <!-- Output section -->
-                    <div class="output">
-                        <div id="response1">
-                            <div class="lottie-animation" data-animation-type="lottie"
-                                data-src="https://assets.website-files.com/640fa33f33c6024cf3e800d6/6411fffbd7d4478b7afe980a_16766-forget-password-animation.json"
-                                data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0"
-                                data-renderer="svg" data-duration="0"></div>
-
-
-                            {% if feedback %}
-                            <h3>Generated Feedback:</h3>
-                            <textarea class="form-control" rows="9">{{ feedback }}</textarea>
-                            {% else %}
-                            <textarea class="form-control"
-                                rows="9">We are creating your request. This can take up to 20 seconds...</textarea>
-                            {% endif %}
-                            <!-- Additional feedback goes here -->
-                        </div>
-                        <br>
-                        <button class="btn btn-primary" onclick="continueToNextPage()">Continue to Next
-                            Page</button>
-                    </div>
+                    
 
 
                     <p class="paragraph policies">

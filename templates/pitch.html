@@ -7,10 +7,32 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-    <link rel="stylesheet"  type="text/css"  href="{{ url_for('static', filename='style.css') }}">
-    <link rel="stylesheet"  type="text/css"  href="style.css"> 
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <title>Ai4innovation Toolkit</title>
     <style>
+    
+        /* Add your existing styles here */
+
+        .congratulations-card {
+            background-color: #49b6b6; /* Your desired background color */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .congratulations-animation {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .congratulations-message {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+    
         .sidebar {
             background-color: #49b6b6;
             color: white;
@@ -36,6 +58,23 @@
             text-decoration: none;
 
             color: black
+        }
+        .jumbotron {
+            background-color: #49b6b6; /* Your desired background color */
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .jumbotron-animation {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .jumbotron-message {
+            font-size: 1.5em;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -118,46 +157,58 @@
                         </div>
                         <a href="#" onclick="history.back(); return false;">
                             <i class="fas fa-arrow-left"></i> Go Back
-                           </a>
-                           <div class="congratulations-card row">
-                            <h1>Congratulations!</h1>
-                            <p>Your pitch was successfully generated. Keep up the great work!</p>
+                        </a>
+
+                    </div>
+                    <div class="container mt-5">
+                        <div class="jumbotron">
+                            <!-- Lottie animation -->
+                            <div class="jumbotron-animation" data-animation-type="lottie"
+                                data-src="https://assets.website-files.com/640fa33f33c6024cf3e800d6/6411fffbd7d4478b7afe980a_16766-forget-password-animation.json"
+                                data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0"
+                                data-renderer="svg" data-duration="0"></div>
+
+                            <!-- Congratulations message -->
+                            <h1 class="display-4 text-center">Congratulations!</h1>
+                            <p class="lead text-center jumbotron-message">Your pitch was successfully generated.
+                                Keep up the great work! Click on generate to see!</p>
                         </div>
                     </div>
 
+
                     <h1 class="mb-4">Your Pitch</h1>
                     <form action="/generate_pitch" method="post">
-   <table class="table table-striped">
-     <tbody>
-      
-        <button class="btn btn-primary" type="submit">Generate Pitch</button>
-        <div class="output">
-            <div id="response1">
-                <div class="lottie-animation" data-animation-type="lottie"
-                    data-src="https://assets.website-files.com/640fa33f33c6024cf3e800d6/6411fffbd7d4478b7afe980a_16766-forget-password-animation.json"
-                    data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0"
-                    data-renderer="svg" data-duration="0"></div>
+                        <table class="table table-striped">
+                            <tbody>
+
+                                <button class="btn btn-primary" type="submit">Generate Pitch</button>
+                                <div class="output">
+                                    <div id="response1">
+                                        <div class="lottie-animation" data-animation-type="lottie"
+                                            data-src="https://assets.website-files.com/640fa33f33c6024cf3e800d6/6411fffbd7d4478b7afe980a_16766-forget-password-animation.json"
+                                            data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0"
+                                            data-renderer="svg" data-duration="0"></div>
 
 
-                {% if feedback %}
-                <h3>Generated Feedback:</h3>
-                <p class="form-control" >{{ feedback }}</p>
-                {% else %}
-                <p class="form-control"
-                    rows="9">We are creating your request. This can take up to 20 seconds...</p>
-                {% endif %}
-                <!-- Additional feedback goes here -->
-            </div>
-            <br>
-            <button class="btn btn-primary" onclick="continueToNextPage()">Continue to Next
-                Page</button>
-        </div>
+                                        {% if feedback %}
+                                        <h3>Generated Pitch:</h3>
+                                        <p class="form-control">{{ feedback }}</p>
+                                        {% else %}
+                                        <p class="form-control" rows="9">We are creating your request. This can take up
+                                            to 20 seconds...</p>
+                                        {% endif %}
+                                        <!-- Additional feedback goes here -->
+                                    </div>
+                                    <br>
+                                    
+                                </div>
 
-     </tbody>
-   </table>
-   </form>
-                   
+                            </tbody>
+                        </table>
+                    </form>
 
+                    <button class="btn btn-primary" onclick="continueToNextPage()"> Next
+                        </button>
                     <p class="paragraph policies">
                         By using this tool, you agree to our <a href="#" target="_blank" class="link">Terms of
                             Service and Policies </a>
@@ -171,7 +222,7 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
+
 
     <script>
         function continueToNextPage() {
