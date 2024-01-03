@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"  type="text/css"  href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet"  type="text/css"  href="style.css"> 
     <title>Ai4innovation Toolkit</title>
     <style>
         .sidebar {
@@ -112,83 +113,50 @@
                             Innovation. (note: 3 apps in development)
                         </p>
                         <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25"
-                                aria-valuemin="0" aria-valuemax="100">25%</div>
+                            <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100"
+                                aria-valuemin="0" aria-valuemax="100">100%</div>
                         </div>
                         <a href="#" onclick="history.back(); return false;">
                             <i class="fas fa-arrow-left"></i> Go Back
                            </a>
-                           
-                        <h1> <b>Please define your core message</b></h1>
+                           <div class="congratulations-card row">
+                            <h1>Congratulations!</h1>
+                            <p>Your pitch was successfully generated. Keep up the great work!</p>
+                        </div>
                     </div>
 
-                    <!-- Question table -->
-                    <form action="/generate_feedback1" method="post">
-                        <div class="container mt-4 tablecontainer">
-                            <table class="table table-bordered table-no-left-border">
-                                <tbody>
-                                  <tr>
-                                    <td><strong>"In one line, what is your pitch? 
-                                        (this is usually your opening)"                                    </strong></td>
-                                    <td>
-                                      <textarea class="form-control" rows="8" cols="12" name="user_input1">Our app, Pregnancy and Period, makes pregnancy easier by providing a free period and pregnancy calculator. It offers discounts on recommended products such as self-hygiene, proteins, and vitamins based on your dates of periods and stage of pregnancy. Additionally, it provides free educational content.</textarea>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td><strong>Up to 3 supporting arguments</strong></td>
-                                    <td>
-                                      <textarea class="form-control" rows="8" name="user_input2">This feature helps users track their menstrual cycle and predict their due date, providing peace of mind during pregnancy.</textarea>
-                                    </td>
-                                    <td>
-                                        <textarea class="form-control" rows="8" name="user_input3">This feature helps users track their menstrual cycle and predict their due date, providing peace of mind during pregnancy.</textarea>
-                                      </td>
-                                      <td>
-                                        <textarea class="form-control" rows="8" name="user_input4">This feature helps users track their menstrual cycle and predict their due date, providing peace of mind during pregnancy.</textarea>
-                                      </td>
-                                    
-                                  </tr>
-                                  
-                                  <!-- <tr>
-                                    <td><strong>Supporting Argument 2 - Discounts based on your dates of periods and stage of pregnancy</strong></td>
-                                    <td>
-                                      <textarea class="form-control" rows="4">By offering personalized discounts, we ensure that users receive relevant and beneficial deals tailored to their specific needs during pregnancy.</textarea>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td><strong>Supporting Argument 3 - Free educational content</strong></td>
-                                    <td>
-                                      <textarea class="form-control" rows="4">Our app provides comprehensive educational content to help users understand and manage their health during pregnancy, promoting overall wellbeing.</textarea>
-                                    </td>
-                                  </tr> -->
-                                </tbody>
-                               </table>
-                            <button class="btn btn-primary" type="submit">Generate Feedback</button>
-                        </div>
-                    </form>
-                    <h3><strong>Is the purpose of your pitch clear?</strong></h3>
-                    <!-- Output section -->
-                    <div class="output">
-                        <div id="response1">
-                            <div class="lottie-animation" data-animation-type="lottie"
-                                data-src="https://assets.website-files.com/640fa33f33c6024cf3e800d6/6411fffbd7d4478b7afe980a_16766-forget-password-animation.json"
-                                data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0"
-                                data-renderer="svg" data-duration="0"></div>
+                    <h1 class="mb-4">Your Pitch</h1>
+                    <form action="/generate_pitch" method="post">
+   <table class="table table-striped">
+     <tbody>
+      
+        <button class="btn btn-primary" type="submit">Generate Pitch</button>
+        <div class="output">
+            <div id="response1">
+                <div class="lottie-animation" data-animation-type="lottie"
+                    data-src="https://assets.website-files.com/640fa33f33c6024cf3e800d6/6411fffbd7d4478b7afe980a_16766-forget-password-animation.json"
+                    data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0"
+                    data-renderer="svg" data-duration="0"></div>
 
 
-                            {% if feedback %}
-                            <h3>Generated Feedback:</h3>
-                            <textarea class="form-control" rows="9">{{ feedback }}</textarea>
-                            {% else %}
-                            <textarea class="form-control"
-                                rows="9">We are creating your request. This can take up to 20 seconds...</textarea>
-                            {% endif %}
-                            <!-- Additional feedback goes here -->
-                        </div>
-                        <br>
-                        <button class="btn btn-primary" onclick="continueToNextPage()">Continue to Next
-                            Page</button>
-                    </div>
+                {% if feedback %}
+                <h3>Generated Feedback:</h3>
+                <p class="form-control" >{{ feedback }}</p>
+                {% else %}
+                <p class="form-control"
+                    rows="9">We are creating your request. This can take up to 20 seconds...</p>
+                {% endif %}
+                <!-- Additional feedback goes here -->
+            </div>
+            <br>
+            <button class="btn btn-primary" onclick="continueToNextPage()">Continue to Next
+                Page</button>
+        </div>
 
+     </tbody>
+   </table>
+   </form>
+                   
 
                     <p class="paragraph policies">
                         By using this tool, you agree to our <a href="#" target="_blank" class="link">Terms of
@@ -207,7 +175,7 @@
 
     <script>
         function continueToNextPage() {
-            window.location = 'step2'
+            window.location = 'more'
         }
     </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
