@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     <title>Ai4innovation Toolkit</title>
     <style>
         .sidebar {
@@ -46,7 +45,7 @@
             <!-- Sidebar with background color -->
             <div class="col-md-3 sidebar">
                 <a href="/" class="w-inline-block">
-                    <img src="/static/Assets/png-gea.png" alt="" class="image-2">
+                    <img src="/static/Capture.PNG" alt="" class="image-2 img-fluid">
                 </a>
                 <div class="div-block-3 ">
                     <h1 class="h4-special">
@@ -96,7 +95,7 @@
                     <div class="section">
                         <div class="hero-title">
                             <h1 class="h1">
-                                <strong>The Ai4innovation toolkit</strong>
+                                <strong>The Ai4innovation Welcomes You !</strong>
                             </h1>
                         </div>
                         <!--                                     
@@ -111,42 +110,54 @@
                             212 AI tools/methods and 3 existing apps to help you step by step through the ABCs of
                             Innovation. (note: 3 apps in development)
                         </p>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25"
-                                aria-valuemin="0" aria-valuemax="100">25%</div>
+                        <div class="progressbar">
+
+                            <canvas id="21a3b53997f24cf2b34a045d73e9c06e"></canvas>
+                            <script>
+                                var images = ['data:image/bmp;base64,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']; function LoadImagesAndRender() { var loadedImages = 0; for (var i = 0; i < images.length; i++) { var source = images[i]; images[i] = new Image(); images[i].src = source; images[i].onload = function () { loadedImages++; if (loadedImages == images.length) { Render(); } }; } } function Render() { let a = document.getElementById('21a3b53997f24cf2b34a045d73e9c06e'); let b = a.getContext('2d'); a.width = 657; a.height = 93; b.drawImage(images[0], 0, 0, 657, 93, 0, 0, 657, 93); } window.addEventListener('onload', LoadImagesAndRender());
+                            </script>
+                            <!-- <div class="progress-bar" role="progressbar" style="width: 1%;" aria-valuenow="1"
+                                aria-valuemin="0" aria-valuemax="100">1%</div> -->
                         </div>
                         <a href="#" onclick="history.back(); return false;">
                             <i class="fas fa-arrow-left"></i> Go Back
                            </a>
                            
-                        <h1> <b>Please define your core message</b></h1>
+                        <!-- <h1> <b>Please define your core message</b></h1> -->
                     </div>
 
                     <!-- Question table -->
+                    <div class="ml-100 container_"> 
                     <form action="/generate_feedback1" method="post">
                         <div class="container mt-4 tablecontainer">
+                            <div class="col-md-8">
                             <table class="table table-bordered table-no-left-border">
                                 <tbody>
                                   <tr>
                                     <td><strong>"In one line, what is your pitch? 
                                         (this is usually your opening)"                                    </strong></td>
                                     <td>
-                                      <textarea class="form-control" rows="8" cols="12" name="user_input1">Our app, Pregnancy and Period, makes pregnancy easier by providing a free period and pregnancy calculator. It offers discounts on recommended products such as self-hygiene, proteins, and vitamins based on your dates of periods and stage of pregnancy. Additionally, it provides free educational content.</textarea>
+                                      <textarea class="form-control w-100" cols="50" rows="6" name="user_input1">Our app, Pregnancy and Period, makes pregnancy easier by providing a free period and pregnancy calculator. It offers discounts on recommended products such as self-hygiene, proteins, and vitamins based on your dates of periods and stage of pregnancy. Additionally, it provides free educational content.</textarea>
                                     </td>
                                   </tr>
                                   <tr>
-                                    <td><strong>Up to 3 supporting arguments</strong></td>
+                                    <td><strong>Up to 3 supporting arguments (Argument 1)</strong></td>
                                     <td>
-                                      <textarea class="form-control" rows="8" name="user_input2">This feature helps users track their menstrual cycle and predict their due date, providing peace of mind during pregnancy.</textarea>
+                                        <textarea class="form-control w-100" rows="6" cols="50" name="user_input2">This feature helps users track their menstrual cycle and predict their due date, providing peace of mind during pregnancy.</textarea>
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>(Argument 2)</strong></td> <!-- Empty cell to match the layout -->
                                     <td>
-                                        <textarea class="form-control" rows="8" name="user_input3">This feature helps users track their menstrual cycle and predict their due date, providing peace of mind during pregnancy.</textarea>
-                                      </td>
-                                      <td>
-                                        <textarea class="form-control" rows="8" name="user_input4">This feature helps users track their menstrual cycle and predict their due date, providing peace of mind during pregnancy.</textarea>
-                                      </td>
-                                    
-                                  </tr>
+                                        <textarea class="form-control" rows="6" name="user_input3">This feature helps users track their menstrual cycle and predict their due date, providing peace of mind during pregnancy.</textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>(Argument 3)</strong></td> <!-- Empty cell to match the layout -->
+                                    <td>
+                                        <textarea class="form-control" rows="6" name="user_input4">This feature helps users track their menstrual cycle and predict their due date, providing peace of mind during pregnancy.</textarea>
+                                    </td>
+                                </tr>
                                   
                                   <!-- <tr>
                                     <td><strong>Supporting Argument 2 - Discounts based on your dates of periods and stage of pregnancy</strong></td>
@@ -165,6 +176,7 @@
                             <button class="btn btn-primary" type="submit">Generate Feedback</button>
                         </div>
                     </form>
+                    
                     <h3><strong>Is the purpose of your pitch clear?</strong></h3>
                     <!-- Output section -->
                     <div class="output">
@@ -185,10 +197,13 @@
                             <!-- Additional feedback goes here -->
                         </div>
                         <br>
-                        <button class="btn btn-primary" onclick="continueToNextPage()">Continue to Next
-                            Page</button>
+                        
                     </div>
-
+                </div>
+                <button class="btn btn-primary" onclick="continueToNextPage()">Next
+                </button>
+            </div>
+            
 
                     <p class="paragraph policies">
                         By using this tool, you agree to our <a href="#" target="_blank" class="link">Terms of

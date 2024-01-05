@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     <title>Ai4innovation Toolkit</title>
     <style>
         .sidebar {
@@ -36,6 +36,9 @@
 
             color: black
         }
+        .progimg{
+           
+        }
     </style>
 </head>
 
@@ -46,7 +49,7 @@
             <!-- Sidebar with background color -->
             <div class="col-md-3 sidebar">
                 <a href="/" class="w-inline-block">
-                    <img src="/static/Assets/png-gea.png" alt="" class="image-2">
+                    <img src="/static/Capture.PNG" alt="" class="image-2 img-fluid">
                 </a>
                 <div class="div-block-3 ">
                     <h1 class="h4-special">
@@ -93,10 +96,10 @@
             <!-- Right side content -->
             <div class="col-md-9">
                 <div class="section">
-                    <div class="section">
+                    
                         <div class="hero-title">
                             <h1 class="h1">
-                                <strong>The Ai4innovation toolkit</strong>
+                                <strong>The Ai4innovation Welcomes You !</strong>
                             </h1>
                         </div>
                         <!--                                     
@@ -111,42 +114,45 @@
                             212 AI tools/methods and 3 existing apps to help you step by step through the ABCs of
                             Innovation. (note: 3 apps in development)
                         </p>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50"
-                                aria-valuemin="0" aria-valuemax="100">50%</div>
+                        <div class="progressbar">
+                            <canvas id="c7af2448cda448598e090ae900a89c52"></canvas>
+                            <script>
+                            var images=['data:image/bmp;base64,iVBORw0KGgoAAAANSUhEUgAAAkgAAABnCAYAAAD7e71lAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAA8PSURBVHhe7d15dBXlHcbx/tnTVq11qxvigqLUuiC4IcUVRS2LaEU4KLgUra1L3UBLC4rbUXDD5dC641ZUVCC77FlYEhIgQEhIWGRJAiQQAlnf3t90bk4yvpG7zdx37v1+znmOcEMmc8eZuU9m3pn5mQIAAEAHFCQAAAAHChIAAIADBQkAAMCBggQAAOBAQQIAAHCgIAEAADhQkAAAABwoSDBCS2uramxpUQeam600Bf4srwEAEA8UJHiqIVB8VlRXq+klJerZ5fnqvgUL1MA5Keq6WbO1GZSSqu5fsFC9kF+gPltfqlbu3GlPCQAA91CQ4Lrq/fvVjLIy9Uh2trYERZKxublqVsVGtbuhwf4pAADEDgUJrpBSNLO8XP19cbYaoCk4scqA2XPU4zm5anagLO1pbLR/OgAA0aEgIeZKa2ut0qIrNG5FSpicsttSV2fPBQAAkaMgIWbkqNGUwkLrqI6uxHiRGwI/+61VqzmaBACICgUJUWtoblYfrltnDajWlZZ45Ja0dPVNeblq5ko4AEAEKEiIigySlgHTupJiQp7PL1B1HE0CAISJgoSIba6rU7dnfa8tJiblnnnz1a4DB+y5BgDg4ChIiIiUo2EZmdpCYmIoSQCAcFCQEDa/laNgKEkAgFAZV5DW7d6tvi2vUC8VrFB/DnygDc/M6pC7581TLxYUqK83lKviXbusx1PAO3Kl2qjv52oLiB/y4KLFqr6pyX43QORk3yP7oK82bFDP5eerO+fO+9H+SvZhL61YYe3TZN8GoKPgdiSf6fLZLp/xpmxHRhSk1YGF8/KKQjU4gqugBga+Rx5DUVBVbU8NbpFiMWb+fO3/Bz/liZxc65EnQCQKq6utfY7se3Tr109laGqaeq1opVpLWUKSi2Y7GpKaqiYHOoMUKzfFtSCV1NTE9IaCDy1a7PoCS2ZSYnXL3Y/5eF2J/a6A0MhzAGUfo1ufIsk/lyxVZbW19tSB5ODGdiQ3J3ZDXArS9vp66/Jrtx5BMXHZMu6oHGPpmzdrl7VfIzez5KgjQiH7kglLl2nXo2gj6+HkwkLr1DWQyFzdjgKRo1Gx3o48L0jLK6vUzWnp2jcZywxJTVMLt26zfyqiISudHNLULWc/Z0RmlqpvarbfJfBjWVu2eLLu35aRqZZWVto/FUgsXm1HcoPgWG5HnhYkefq6W0eNOsun69fbPx2Rcqv1m5DXi1ba7xLoSE7D6tYZtyL7RhmECiSSz0tLteu7W4nlduRZQfJ6IbUP400iN++HH7TLNJEi58SB9t5bs1a7rngRShIShd+3I08KUsrGTdo34GWkoCF8clm8bnkmUp7KW2K/WyC+v8xJZFzS3MAvJoCfxXs7ksyu2GjPTWRcL0hyOWs8n+7ePjL+CaGTyzB1yzHRIodkN+3da79rJLPF27Zp1xGvI/vMNdwKAD6VKNuRqwVJHhJ6h0HP6hqekal2ciflkMmRFd1yTMQwFglyl/WhHlxAEmrkhqz7m7mIAP5i4na0N8IHlrtakEy8b44MOMbBVdbXqxsMOfLnReQmpXwYJTcTL0Z4e/Vqe+4Af0ik7ci1giQDX3UzakKyt2235xKd8foKHhMi93pCcpJ9gm6diHeuD/ySsr6mxp5LwGyJth25VpBMvjT8sZwcey6h0xrISINOjXoVGZCO5GTyxQjynDfAD+SzVbcOm5BIzh65UpDkjpky8FU3k6aEAZCd29PYaMzAei8zcE4Kz2hLQqZfjCCnujfzZAAYTj5TdeuvKZFOEu525EpB8sPpGc7td87Uw6RehOKcfPzwjEHu5QbTyWeqbt01KeFuRzEvSHJ6RkaN62bOpAxLz1DNrTK3cJpWXKxdZsmQGWVl9lJAMjjQ3GwN0NetCyZF9qnsrWAq+Sy9NfCZqlt3TUq421HMC9LWffu0M2ZiZMd4U2oacSSZrl5z5sY5KdplQhIzfihHwcjzJXXvgZB4Z4WP7plXFcYDbWNekDK3bNHOFCGEEEISL9NL/HPV89wtod+lPuYF6ZOS9dqZIomTC/41QR3WrZs69NRT1c+PPEoddtpp1t/l9e6jRqvzxz2p/b6D5fL33w9M53R11pgxHV6/9NXX1C9POCHi6V758XTV9+13tF8jhBASXV4sKNC+bmKko4Qq5gXp1aIi7UyRxIsUmi7XDVBXf/5F22vRFqTfnH22Ov6KK9Q1X37V9vpZY+5Vv+rSJeLpyjxJdF8jhBASXR7LydW+bmJeKSyy28rBxbwgPbNsuXamSOKls4LUbfgIdXTv3uqQrl3VyYOHqP5fz7S+1vMf49XhPXpYR5yO69dPXfHhR23fJ5Hpndi/v5U+r79hvSZF6eRBg63pBAtSv/+8q357aR/rqNXhZ/VQvSdNsl7v9fQz6sjzz7emf1SvXuoP06ZZR7V+cexxVoJHuYI/jxBCSPS5f+FC7esm5ulARwlVzAvSuNw87UyRxEtnBanL9ddbpeiaGV9aZeeSKVNUnzemqq4DB7WVpbMfeECdedfdbd8nCU6vx733qd8//LD1mhSlbiNGqDNGjbIKkhSmrn8cqC578y3r6/LfE6+9Vl39xX9V72efU1dO/8R6XeYjOA2OIBFCiHsZ7YMr14MZG+gooaIgkYjTWUE69/En2v4uR34ufullq9zIEZxjLrrYylE9e6putw1v+3eS4PQumfKKOvmmm1T/md+o3/31b6rn+PHWdGUa8m+OOOccdfSFF1rTkf8ee9ll1jgjKV+9Jj5tfa+MjwqWIgoSIYS4FwpSiDjFljzprCC1HyvUviCdNmxY2+u6BKd35SefqlOGDlV9pr5pfc/lH3zYoSAdf9VV1r9p/71yZEmOJMmRqas+/cwqaRQkQghxP5xiCxGDtJMn4RQkuRJNjvQExx1dMGGiOm/suLZ/J2k/PZnG6SNHqjNuv8P6WnC6ctpOCpIcKfr/93yguo++U/V7973A9Pta45PkSJKc5guWIjnVFpwOIYSQ2MZPZ47iOkiby/yTJ+EUpOu+m6XOeeRR9evu3a1B1Mf27WuVm+C/k7Sfnhw1koHWvSc9a32t/XTlyNIxF11kTUcGaVtlKTD9M+++Rx1y0knWQHApREece641/kkGa8vg7UNPOUWd98TYDj+TEEJIdJkSKB26101MXC/z50aRhBBCSPLETzeKzNy8xW4rBxfzguSnR40MSkm1bt9POiaZHzUi7123TEhiRvYBuvXAxMhjUXTvgZB4Z+mOSu06a2Kko4Qq5gVJ+GFE+5/SM+y5hRMPq0WyaGxpUUMDO3jdumBSZJ8KmEw+U3XrrkkJdztypSB9vM78w21vr15tzy2csrdt1y6zZEhZba29FJAsXl5RqF0XTIrsUwGTyWeqbt01KeFuR64UpO319dqZMyl8EHZuT2OjGpCEp9mGpqWrVnsZIHms2rlLuz6YFNmnAiaTz1TdumtSwt2OXClIYsLSZdoZNCGP5eTYc4nOPLhosXbZJXLkHl5ITiav78/l59tzCZhNPlt167AJkU4SLtcK0prdu7UzaULyq6rsuURnvt5Qrl12iRw5tYjklLdjh3adMCEbavfYcwmYbVmluYO1S2pq7LkMnWsFSZh4bp/fxkKzu6FB3ZhEp9luTc9QTa2cYEtmJh71Zqwk/CaRtiNXC1JdY6MaZdAVbbdlZFof/AhNMj02ZurKVfa7RrLadeCAujktXbt+xCN3ZH2v9jU12XMH+EMibUeuFiQhp9pMGfBbUFVtzxVCsb6mRg3QLMdEi9z76Ie60O+NgcS1YOtW7TridW6ck6LWBvadgB+Zsh1J94hmO3K9IInZFRu1M+9lPi8ttecG4Xgqb4l2eSZS5FQwECT7Ct164lVkp56ycZM9N4A/xXs7kkS7HXlSkMTMOA765R4ikSv1waWb0WZbGHdWRXJ4d81a7briRb6rqLDnAvC3eN4TcWZ5uT0XkfOsIIlvyys8P2XDkaPovV60UrtsEyGUZ3TG65277BtnVWy0fzqQGPy8HXlakMTSykp1iwcDuIakpnLZdozUNDRYz9vRLWc/Z2RWlvWoCaAz6Zs3e7LuD8vIVMsruf0IEtPCrds82Y5kcHgstyPPC5Ko2r9fvZBfoH2DsYhcZshpk9iSDwrdsvZrZJxHYTWD9nFwMoB/4jL3Ll2eXFhoXfkDJDK3t6PnA52iOtAtYikuBSlIrpJ6PCdX+2YjyUOLFquVO3faU0es+eGZVaGGU2sIl+xbZB+jW58iyfglS3jkEZKOG9uRjJV1Q1wLUpA8C2ly4MNXTovpFsBPZWBKqnU0iqMB7jvQ3Kzunb9A+//BTxmXm2e/IyB8crsQ2efIvke3fv1UhqamqVeLiriEH0kvmu1ocOB75Bf24l277Km5w4iC1J7sOOQqjn8Xr7EW3qPZOerOufOsyJ/ltWnFxeqb8nJr4TCGxFtyCHO0QTf/DDcPLFqk6rn5HmJA9j2rAr8NyxW676wuVs8tz7f2UbJ93BXYX8lzqWR/Jfsy2adRioAfk+1IPsvlM10+24Of+yZsR8YVJJhv6759akRmlraAmJx75s1XtdxJHQAQAgoSIiID7cfMn68tIibmkexsyhEAIGQUJESsrqlJPZmXpy0kJkWunAAAIBwUJESlpbVVvVJYpC0m8Y7cMEyuVuMZ/QCAcFGQEBPyzJtBEVyN4FbkZqR5O3bYcwcAQHgoSIgZGZckR5PkJoy60uJF5Mn8U1euUnsbG+25AgAgfBQkxJzc/E7uNaQrMG5m0vLlatPevfZcAAAQOQoSXJNfVRXTO6V3FjfvpAoASE4UJLhObi45o6zMutReV3AiydjcXOuJzbu5dB8A4AIKEjzV0NJiPW35o3Ul1imxMQd5dIkM/P7LgoXWgwg/W1+qiqp51h4AwH0UJBhBbhcgt5yX571JmgJ/ltcAAIgHChIAAIADBQkAAMCBggQAAOBAQQIAAHCgIAEAADhQkAAAABwoSAAAAA4UJAAAAAcKEgAAgAMFCQAAwIGCBAAA4EBBAgAAcKAgAQAAOFCQAAAAHChIAAAADhQkAAAABwoSAACAAwUJAADAgYIEAADgQEECAABwoCABAAA4UJAAAAAcKEgAAAAOFCQAAAAHChIAAIADBQkAAMCBggQAAOBAQQIAAHCgIAEAAHSg1P8AJGXwAqFkgAsAAAAASUVORK5CYII='];function LoadImagesAndRender(){var loadedImages=0;for(var i=0;i<images.length;i++){var source=images[i];images[i]=new Image();images[i].src=source;images[i].onload=function(){loadedImages++;if (loadedImages==images.length){Render();}};}}function Render(){let a=document.getElementById('c7af2448cda448598e090ae900a89c52');let b=a.getContext('2d');a.width=584;a.height=103;b.drawImage(images[0],0,0,584,103,0,0,584,103);}window.addEventListener('onload',LoadImagesAndRender());
+                            </script>
                         </div>
                         <a href="#" onclick="history.back(); return false;">
                             <i class="fas fa-arrow-left"></i> Go Back
                         </a>
 
-                        <h1> <b>Please describe Content of the pitch</b></h1>
-                    </div>
+                        <!-- <h1> <b>Please describe Content of the pitch</b></h1> -->
+                    
 
                     <!-- Question table -->
+                    <div class="ml-100 container_"> 
                     <form action="/generate_feedback2" method="post">
                         <div class="container mt-4 tablecontainer">
-
+                            <div class="col-md-8">
                             <table class="table table-bordered table-no-left-border">
                                 <tbody>
                                     <tr>
                                         <td><strong>PROOF - Why should we believe you can do this</strong></td>
                                         <td>
-                                            <textarea class="form-control" rows="4"
+                                            <textarea class="form-control w-100" rows="6" cols="50"
                                                 name="user_input1">Partnership with the best women wellness product manufacturers provides good discounts</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><strong>Proof 2 - if available add testimonials</strong></td>
                                         <td>
-                                            <textarea class="form-control " name="user_input2"
-                                                rows="4">Not yet</textarea>
+                                            <textarea class="form-control w-100" name="user_input2" cols="50"
+                                                rows="6">Not yet</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><strong>PAYOFF - Dramatic Difference (how their life will be
                                                 better/different)</strong></td>
                                         <td>
-                                            <textarea class="form-control" rows="4"
+                                            <textarea class="form-control w-100" rows="6" cols="50"
                                                 name="user_input3">Care-free from periods and pregnancy, no need to go to stores anymore, order online products and get at your door, save time and money</textarea>
                                         </td>
                                     </tr>
@@ -154,20 +160,21 @@
                                         <td><strong>PROFIT (If applicable) - how will this product/service make a
                                                 profit</strong></td>
                                         <td>
-                                            <textarea class="form-control" rows="4"
+                                            <textarea class="form-control w-100" rows="6" cols="50"
                                                 name="user_input4">With minimum delivery charges and profits from products sold</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><strong>PASSION - Why are you excited about this</strong></td>
                                         <td>
-                                            <textarea class="form-control" rows="4"
+                                            <textarea class="form-control w-100" rows="6" cols="50"
                                                 name="user_input5">Right now there isn't any solution like this in my country</textarea>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                             <button class="btn btn-primary" type="submit">Generate Feedback</button>
+                            </div>
                         </div>
                     </form>
                     <h3><strong>Is the purpose of your pitch clear?</strong></h3>
@@ -190,8 +197,9 @@
                             <!-- Additional feedback goes here -->
                         </div>
                         <br>
-                        <button class="btn btn-primary" onclick="continueToNextPage()">Continue to Next
-                            Page</button>
+                        <button class="btn btn-primary" onclick="continueToNextPage()"> Next
+                            </button>
+                    </div>
                     </div>
 
 
@@ -201,7 +209,7 @@
                         and &nbsp;<a href="https://openai.com/policies/terms-of-use" target="_blank"
                             class="link">OpenAI’s Terms of Service and Policies</a>
                     </p>
-                </div>
+               
             </div>
         </div>
     </div>

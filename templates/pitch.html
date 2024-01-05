@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="stylesheet" type="text/css" href="style.css">
     <title>Ai4innovation Toolkit</title>
     <style>
     
@@ -86,7 +85,7 @@
             <!-- Sidebar with background color -->
             <div class="col-md-3 sidebar">
                 <a href="/" class="w-inline-block">
-                    <img src="/static/Assets/png-gea.png" alt="" class="image-2">
+                    <img src="/static/Capture.PNG" alt="" class="image-2 img-fluid">
                 </a>
                 <div class="div-block-3 ">
                     <h1 class="h4-special">
@@ -151,16 +150,20 @@
                             212 AI tools/methods and 3 existing apps to help you step by step through the ABCs of
                             Innovation. (note: 3 apps in development)
                         </p>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100"
-                                aria-valuemin="0" aria-valuemax="100">100%</div>
+                        <div class="progressbar">
+                            <canvas id="45692d1e0ccb4bfe99683090718045ba"></canvas>
+                            <script>
+                            var images=['data:image/bmp;base64,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'];function LoadImagesAndRender(){var loadedImages=0;for(var i=0;i<images.length;i++){var source=images[i];images[i]=new Image();images[i].src=source;images[i].onload=function(){loadedImages++;if (loadedImages==images.length){Render();}};}}function Render(){let a=document.getElementById('45692d1e0ccb4bfe99683090718045ba');let b=a.getContext('2d');a.width=582;a.height=82;b.drawImage(images[0],0,0,582,82,0,0,582,82);}window.addEventListener('onload',LoadImagesAndRender());
+                            </script>
                         </div>
                         <a href="#" onclick="history.back(); return false;">
                             <i class="fas fa-arrow-left"></i> Go Back
                         </a>
 
                     </div>
-                    <div class="container mt-5">
+                    <div class="container_ mt-5 ml-100 mr-100">
+                        <div class="row">
+                            <div class="col-md-8">
                         <div class="jumbotron">
                             <!-- Lottie animation -->
                             <div class="jumbotron-animation" data-animation-type="lottie"
@@ -173,7 +176,7 @@
                             <p class="lead text-center jumbotron-message">Your pitch was successfully generated.
                                 Keep up the great work! Click on generate to see!</p>
                         </div>
-                    </div>
+                   
 
 
                     <h1 class="mb-4">Your Pitch</h1>
@@ -209,6 +212,9 @@
 
                     <button class="btn btn-primary" onclick="continueToNextPage()"> Next
                         </button>
+                        </div>
+                        </div>
+                    </div>
                     <p class="paragraph policies">
                         By using this tool, you agree to our <a href="#" target="_blank" class="link">Terms of
                             Service and Policies </a>
