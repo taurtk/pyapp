@@ -58,8 +58,8 @@
             align-items: center;
             justify-content: center;
         }
-        .container_
-        {
+
+        .container_ {
             align-items: center;
             justify-content: center;
             margin-left: 150px;
@@ -155,82 +155,86 @@
                         </div>
                         <!-- <h1> <b>Please define your core message</b></h1> -->
 
-                        <div class="ml-100 container_">                       <!-- Question table -->
-                        <form action="/generate_feedback" method="post">
-                            <div class="container mt-4 tablecontainer">
-                                <div class="row">
-                                    <div class="col-md-8">
-                                        <table class="table table-bordered table-no-left-border">
-                                            <tbody>
-                                                <tr>
-                                                    <td><strong>Why is this pitch important to you?</strong></td>
-                                                    <td>
-                                                        <textarea class="form-control wide-textarea w-100" rows="6"
-                                                            cols="50"
-                                                            name="user_input1">I want physical and mental wellbeing of every woman during the time of periods and pregnancy</textarea>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><strong>What is the goal of your pitch?</strong></td>
-                                                    <td>
-                                                        <textarea class="form-control" rows="6"
-                                                            name="user_input2">To embrace women and help them during pregnancy and periods </textarea>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><strong>What does your audience believe before the
-                                                            pitch?</strong></td>
-                                                    <td>
-                                                        <textarea class="form-control" rows="6"
-                                                            name="user_input3">Self-hygiene and mental wellbeing products for women are available in stores</textarea>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><strong>What should your audience believe after the pitch? (and
-                                                            Why)</strong></td>
-                                                    <td>
-                                                        <textarea class="form-control" rows="6"
-                                                            name="user_input4">Using our ecommerce app you can save money and time </textarea>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                        <div class="ml-100 container_"> <!-- Question table -->
+                            <form action="/generate_feedback" method="post">
+                                <div class="container mt-4 tablecontainer">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <table class="table table-bordered table-no-left-border">
+                                                <tbody>
+                                                    <tr>
+                                                        <td><strong>Why is this pitch important to you?</strong></td>
+                                                        <td>
+                                                            <textarea class="form-control wide-textarea w-100"
+                                                                placeholder="Please  enter or edit your  answer"
+                                                                rows="6" cols="50" name="user_input1"></textarea>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>What is the goal of your pitch?</strong></td>
+                                                        <td>
+                                                            <textarea class="form-control" rows="6"
+                                                                placeholder="Please  enter or edit your  answer"
+                                                                name="user_input2"></textarea>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>What does your audience believe before the
+                                                                pitch?</strong></td>
+                                                        <td>
+                                                            <textarea class="form-control" rows="6"
+                                                                placeholder="Please  enter or edit your  answer"
+                                                                name="user_input3"></textarea>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>What should your audience believe after the pitch?
+                                                                (and
+                                                                Why)</strong></td>
+                                                        <td>
+                                                            <textarea class="form-control" rows="6"
+                                                                placeholder="Please  enter or edit your  answer"
+                                                                name="user_input4"></textarea>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <button class="btn btn-primary" type="submit">Generate Feedback</button>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <button class="btn btn-primary" type="submit">Generate Feedback</button>
-                                    </div>
+                            </form>
+                            <h3><strong>AI Feedback: Is the purpose of your pitch clear?</strong></h3>
+                            <!-- Output section -->
+                            <div class="output">
+                                <div id="response1">
+                                    <div class="lottie-animation" data-animation-type="lottie"
+                                        data-src="https://assets.website-files.com/640fa33f33c6024cf3e800d6/6411fffbd7d4478b7afe980a_16766-forget-password-animation.json"
+                                        data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0"
+                                        data-renderer="svg" data-duration="0"></div>
+
+
+                                    {% if feedback %}
+                                    <h3>Generated Feedback:</h3>
+                                    <textarea class="form-control" rows="6">{{ feedback }}</textarea>
+                                    {% else %}
+                                    <textarea class="form-control"
+                                        rows="6">We are creating your request. This can take up to 20 seconds...</textarea>
+                                    {% endif %}
+                                    <!-- Additional feedback goes here -->
                                 </div>
-                            </div>
-
-                        </form>
-                        <h3><strong>Is the purpose of your pitch clear?</strong></h3>
-                        <!-- Output section -->
-                        <div class="output">
-                            <div id="response1">
-                                <div class="lottie-animation" data-animation-type="lottie"
-                                    data-src="https://assets.website-files.com/640fa33f33c6024cf3e800d6/6411fffbd7d4478b7afe980a_16766-forget-password-animation.json"
-                                    data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0"
-                                    data-renderer="svg" data-duration="0"></div>
-
-
-                                {% if feedback %}
-                                <h3>Generated Feedback:</h3>
-                                <textarea class="form-control" rows="6">{{ feedback }}</textarea>
-                                {% else %}
-                                <textarea class="form-control"
-                                    rows="6">We are creating your request. This can take up to 20 seconds...</textarea>
-                                {% endif %}
-                                <!-- Additional feedback goes here -->
-                            </div>
-                            <br>
-                            <button class="btn btn-primary" onclick="continueToNextPage()"> Next
+                                <br>
+                                <button class="btn btn-primary" onclick="continueToNextPage()"> Next
                                 </button>
+                            </div>
                         </div>
-                    </div>
- 
+
                         <p class="paragraph policies">
                             By using this tool, you agree to our <a href="#" target="_blank" class="link">Terms of
                                 Service and Policies </a>
@@ -244,39 +248,39 @@
     </div>
 
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script>
-            var interval = setInterval(update_progress, 1000);
-            function update_progress() {
-                $.get('/progress').done(function (n) {
-                    n = n / 5; // percent value
-                    if (n == 100) {
-                        clearInterval(interval);
-                    }
-                    $('.step').each(function () {
-                        if ($(this).index() * 20 < n && $(this).index() * 20 + 20 >= n) {
-                            $(this).addClass('is-current');
-                            if ($(this).prev().hasClass('is-complete')) {
-                                $(this).addClass('is-complete');
-                            }
-                        } else {
-                            $(this).removeClass('is-current is-complete');
-                        }
-                    });
-                }).fail(function () {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        var interval = setInterval(update_progress, 1000);
+        function update_progress() {
+            $.get('/progress').done(function (n) {
+                n = n / 5; // percent value
+                if (n == 100) {
                     clearInterval(interval);
+                }
+                $('.step').each(function () {
+                    if ($(this).index() * 20 < n && $(this).index() * 20 + 20 >= n) {
+                        $(this).addClass('is-current');
+                        if ($(this).prev().hasClass('is-complete')) {
+                            $(this).addClass('is-complete');
+                        }
+                    } else {
+                        $(this).removeClass('is-current is-complete');
+                    }
                 });
-            }
-        </script>
+            }).fail(function () {
+                clearInterval(interval);
+            });
+        }
+    </script>
 
-        <script>
-            function continueToNextPage() {
-                window.location = 'step1'
-            }
-        </script>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+        function continueToNextPage() {
+            window.location = 'step1'
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 </body>
 

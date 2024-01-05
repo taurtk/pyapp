@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     <title>Ai4innovation Toolkit</title>
     <style>
         .sidebar {
@@ -46,7 +46,7 @@
             <!-- Sidebar with background color -->
             <div class="col-md-3 sidebar">
                 <a href="/" class="w-inline-block">
-                    <img src="/static/Assets/png-gea.png" alt="" class="image-2">
+                    <img src="/static/Capture.PNG" alt="" class="image-2 img-fluid">
                 </a>
                 <div class="div-block-3 ">
                     <h1 class="h4-special">
@@ -111,42 +111,49 @@
                             212 AI tools/methods and 3 existing apps to help you step by step through the ABCs of
                             Innovation. (note: 3 apps in development)
                         </p>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75"
-                                aria-valuemin="0" aria-valuemax="100">75%</div>
+                        <div class="progressbar">
+                            
+<canvas id="e2f5813b8b884b4290dee1a3cbdbf873"></canvas>
+<script>
+var images=['data:image/bmp;base64,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'];function LoadImagesAndRender(){var loadedImages=0;for(var i=0;i<images.length;i++){var source=images[i];images[i]=new Image();images[i].src=source;images[i].onload=function(){loadedImages++;if (loadedImages==images.length){Render();}};}}function Render(){let a=document.getElementById('e2f5813b8b884b4290dee1a3cbdbf873');let b=a.getContext('2d');a.width=611;a.height=99;b.drawImage(images[0],0,0,611,99,0,0,611,99);}window.addEventListener('onload',LoadImagesAndRender());
+</script>
                         </div>
                         <a href="#" onclick="history.back(); return false;">
                             <i class="fas fa-arrow-left"></i> Go Back
                            </a>
                            
-                        <h1> <b>Please define your core message</b></h1>
+                        <!-- <h1> <b>Please define your core message</b></h1> -->
                     </div>
 
                     <!-- Question table -->
+                    <div class="ml-100 container_"> 
                     <form action="/generate_feedback3" method="post">
                         <div class="container mt-4 tablecontainer">
-                           
+                            <div class="col-md-8">
                             <table class="table table-bordered table-no-left-border">
                                 <tbody>
                                 <tr>
                                   <td><strong>Call to Action - What after your pitch</strong></td>
                                   <td>
-                                    <textarea class="form-control" rows="4" name="user_input1">Please try our ecommerce site periods.co.in</textarea>
+                                    <textarea class="form-control w-100" rows="6" cols="50" name="user_input1"   placeholder="Please  enter or edit your  answer"></textarea>
                                   </td>
                                 </tr>
                                 <tr>
                                   <td><strong>Why do this (up to 3 reasons)</strong></td>
                                   <td>
-                                    <textarea class="form-control" rows="4" name="user_input2">It is free to use and learn more about menstrual health and well-being. Try to register yourself and use our free periods & pregnancy tracking app. Get suggestions based on it and discounts on products.</textarea>
+                                    <textarea class="form-control w-100" rows="6" cols="50" name="user_input2"   placeholder="Please  enter or edit your  answer"></textarea>
                                   </td>
                                 </tr>
                                 </tbody>
                                </table>
+                               </div>
                                
                             <button class="btn btn-primary" type="submit">Generate Feedback</button>
                         </div>
                     </form>
-                    <h3><strong>Is the purpose of your pitch clear?</strong></h3>
+                    <h3><strong>AI Feedback: Can anyone understand why they should take the action you are suggesting ?
+
+                    </strong></h3>
                     <!-- Output section -->
                     <div class="output">
                         <div id="response1">
@@ -166,8 +173,9 @@
                             <!-- Additional feedback goes here -->
                         </div>
                         <br>
-                        <button class="btn btn-primary" onclick="continueToNextPage()">Continue to Next
-                            Page</button>
+                        <button class="btn btn-primary" onclick="continueToNextPage()">Next
+                            </button>
+                    </div>
                     </div>
 
 
