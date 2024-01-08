@@ -2,13 +2,12 @@
 
 
 
-step11 = """Here is the introduction of a
- pitch we are planning to make 
- | {user_input1}
-   {user_input2}
-     {user_input3}
-     {user_input4}
-     | Is this introduction clear, compelling and interesting ?"""
+step11 = """Here are some notes on a presentation we are preparing 
+We think people believe the following now |
+{user_input3} .After our talk we want them to believe |{user_input4}.
+ The end objective of this pitch is |{user_input2}Based on the these
+   notes does it appear we have a clear objective for our presentation
+"""
 
 
 step12 = """"Here is the introduction of a pitch

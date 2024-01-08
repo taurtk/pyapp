@@ -15,6 +15,10 @@ def prompts_for_analysis():
     return prompts
 
 @app.route('/')
+def welcome():
+    return render_template('welcome.html')
+
+@app.route('/index')
 def index():
     return render_template('index.html')
 
@@ -43,7 +47,7 @@ def more():
 user_inputs = {
     'step1': {'input1': '', 'input2': '', 'input3': '', 'input4': ''},
     'step2': {'input1': '', 'input2': '', 'input3': '', 'input4': ''},
-    'step3': {'input1': '', 'input2': '', 'input3': '', 'input4': '','input5':''},
+    'step3': {'input1': '', 'input2': '', 'input3': '', 'input4': '','input5':'','input6':'','input7':''},
     'step4': {'input1': '', 'input2': ''},
 }
 
@@ -65,11 +69,12 @@ def generate_feedback():
 #     pitch_input4 =user_input4 = user_inputs[3]
     # print('i am here',pitch_input1)
 
-    step11 = f"""Here are some notes on a presentation we are preparing. We think people believe the following now:
+    
+    step11 = f"""Here are some notes on a presentation we are preparing. We think people believe the following now
     |{user_inputs['step1']['input3']} After our talk we want them to believe
     |{user_inputs['step1']['input4']}
     The end objective of this pitch is
-    |{user_inputs['step1']['input2']} Based on these notes does it appear we have a clear objective for our presentation"""
+    |{user_inputs['step1']['input2']} Based on these notes does it appear we have a clear objective for our presentation?"""
         # # Loop through prompts and get responses from ChatGPT
     for prompt in prompts_for_analysis():
             # Call OpenAI API
@@ -78,7 +83,7 @@ def generate_feedback():
                 messages=[
                 {"role": "user", "content": step11}
             ],
-                max_tokens=150
+                
             )
             # Append the response to the list
         feedback =  response.choices[0].message.content
@@ -116,7 +121,7 @@ def generate_feedback1():
                 messages=[
                 {"role": "user", "content": step12}
             ],
-                max_tokens=150
+                
             )
             # Append the response to the list
         feedback =  response.choices[0].message.content
@@ -130,7 +135,7 @@ def generate_feedback1():
 @app.route('/generate_feedback2', methods=['POST'])
 def generate_feedback2():
     # Define a list to store user inputs
-    for i in range(1, 6):
+    for i in range(1, 8):
         input_key = f'input{i}'
         user_inputs['step3'][input_key] = request.form[f'user_input{i}']
     # try:
@@ -142,21 +147,16 @@ def generate_feedback2():
     # pitch_input12 =user_input5 = user_inputs[4]
 
     
-    step2 =f"""
+   
 
- Here are they key elements of our business pitch
-   | PROBLEM - WHAT is the problem and for whom    
-    {user_inputs['step3']['input1']} PROMISE- In clear simple terms,
-   what is the benefit you are offering        
-   {user_inputs['step3']['input2']} PROOF 
-   - Why should we believe you can do this         
-     {user_inputs['step3']['input3']} PAYOFF
-         - Dramatic Difference (how their life will be
-           better/different){user_inputs['step3']['input4']}PAYOFF - Dramatic Difference 
-               (how their life will be better/different)
-              {user_inputs['step3']['input5']}
-               Based on this pitch is their clear
-                 evidence this company could makea profit ?"""
+    step21=f"""Here are 3 parts of a presenation we are are working on  
+We aim to solve this "problem' 
+|{user_inputs['step3']['input1']}
+The benefit we offer is |
+|{user_inputs['step3']['input2']}
+The reason to believe is | 
+|{user_inputs['step3']['input3']} Is the problem 
+, benefit and reasons to bleieve clear ?"""
 
         # # Loop through prompts and get responses from ChatGPT
     for prompt in prompts_for_analysis():
@@ -164,16 +164,59 @@ def generate_feedback2():
         response = openai.ChatCompletion.create(
                 model = "gpt-3.5-turbo",  # You can choose a different engine
                 messages=[
-                {"role": "user", "content": step2}
+                {"role": "user", "content": step21}
             ],
-                max_tokens=150
+                
             )
             # Append the response to the list
         feedback =  response.choices[0].message.content
         print(feedback)
 
+   
+    step22=f"""Earlier we shared three parts 
+of a presentation. 
+These are | We aim to solve this 
+"problem' |{user_inputs['step3']['input1']}
+The benefit we offer is |{user_inputs['step3']['input2']}
+The reason to believe is | {user_inputs['step3']['input3']}
+We want plan to make this promise to people
+|We want plan to make this promise to people
+|{user_inputs['step3']['input5']} and profits from 
+ {user_inputs['step3']['input6']} Is this promise clear and 
+compelling ?
+
+Here are they key elements of our
+business pitch | PROBLEM -
+WHAT is the problem and for whom   
+{user_inputs['step3']['input1']} PROMISE- In clear simple terms, 
+what is the benefit you are offering       
+{user_inputs['step3']['input2']} 
+PROOF -3
+PAYOFF - Dramatic Difference (how their life 
+                              
+  will be better/different)4 PAYOFF - Dramatic Difference 
+(how their life will be better/different)
+{user_inputs['step3']['input5']}
+Based on this pitch is their clear evidence 
+this company could makea profit ?"""
+    
+     # # Loop through prompts and get responses from ChatGPT
+    for prompt in prompts_for_analysis():
+            # Call OpenAI API
+        response = openai.ChatCompletion.create(
+                model = "gpt-3.5-turbo",  # You can choose a different engine
+                messages=[
+                {"role": "user", "content": step22}
+            ],
+                
+            )
+            # Append the response to the list
+        feedback1 =  response.choices[0].message.content
+        print(feedback1)
+
+
         
-    return render_template('step2.html', user_inputs=user_inputs, feedback=feedback)
+    return render_template('step2.html', user_inputs=user_inputs, feedback=feedback+'\n \n  Feedback 2:'+feedback1)
 
 
     
@@ -202,7 +245,7 @@ def generate_feedback3():
                 messages=[
                 {"role": "user", "content": step3}
             ],
-                max_tokens=150
+                
             )
             # Append the response to the list
         feedback =  response.choices[0].message.content
@@ -244,7 +287,7 @@ def generate_pitch():
                 messages=[
                 {"role": "user", "content": pitch_prompt}
             ],
-                max_tokens=150
+                
             )
             # Append the response to the list
         feedback =  response.choices[0].message.content
@@ -292,7 +335,7 @@ def generate_pitch():
 #                 messages=[
 #                 {"role": "user", "content": step1}
 #             ],
-#                 max_tokens=150
+#                 
 #             )
         
 #         print(response)
