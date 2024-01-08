@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     <title>Ai4innovation Toolkit</title>
     <style>
         .sidebar {
@@ -124,8 +125,11 @@
                     <div class="section">
                         <div class="hero-title">
                             <h1 class="h1">
-                                <strong>The Ai4innovation Welcomes You !</strong>
+                                
+
+                                <strong>The AI pitch-maker tool: Make a 3-5 minute pitch fast</strong>
                             </h1>
+                          
                         </div>
                         <!--                                     
                 <ol class="steps">
@@ -134,11 +138,20 @@
                     <li class="step">Step 3</li>
                     
                 </ol> -->
-
-                        <p class="paragraph subtitle">
-                            212 AI tools/methods and 3 existing apps to help you step by step through the ABCs of
-                            Innovation. (note: 3 apps in development)
+                        <ul class="styled-list">
+                            <li><strong>A step by step process to make a great pitch</strong></li>
+                            <li> <strong> Expert advice based on thousands of pitches</strong></li>
+                        </l>
+                        <p >
+                            
+                           
+                            
+                            <strong>Get started now. </strong>
+                            
+                            
                         </p>
+
+                        <h6  >Step 1: Define your core message and objective</h6>
 
 
 
@@ -163,28 +176,31 @@
                                             <table class="table table-bordered table-no-left-border">
                                                 <tbody>
                                                     <tr>
+                                                        
+                                                    </tr>
+                                                    <tr>
                                                         <td><strong>Why is this pitch important to you?</strong></td>
                                                         <td>
                                                             <textarea class="form-control wide-textarea w-100"
                                                                 placeholder="Please  enter or edit your  answer"
-                                                                rows="6" cols="50" name="user_input1"></textarea>
+                                                                rows="4" cols="50" name="user_input1" required></textarea>
                                                         </td>
                                                     </tr>
-                                                    <tr>
+                                                     <tr>
                                                         <td><strong>What is the goal of your pitch?</strong></td>
                                                         <td>
-                                                            <textarea class="form-control" rows="6"
+                                                            <textarea class="form-control" rows="4"
                                                                 placeholder="Please  enter or edit your  answer"
-                                                                name="user_input2"></textarea>
+                                                                name="user_input2" required></textarea>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td><strong>What does your audience believe before the
                                                                 pitch?</strong></td>
                                                         <td>
-                                                            <textarea class="form-control" rows="6"
+                                                            <textarea class="form-control" rows="4"
                                                                 placeholder="Please  enter or edit your  answer"
-                                                                name="user_input3"></textarea>
+                                                                name="user_input3" required></textarea>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -192,9 +208,9 @@
                                                                 (and
                                                                 Why)</strong></td>
                                                         <td>
-                                                            <textarea class="form-control" rows="6"
+                                                            <textarea class="form-control" rows="4"
                                                                 placeholder="Please  enter or edit your  answer"
-                                                                name="user_input4"></textarea>
+                                                                name="user_input4" required></textarea>
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -249,7 +265,7 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
+    <!-- <script>
         var interval = setInterval(update_progress, 1000);
         function update_progress() {
             $.get('/progress').done(function (n) {
@@ -271,7 +287,7 @@
                 clearInterval(interval);
             });
         }
-    </script>
+    </script> -->
 
     <script>
         function continueToNextPage() {
