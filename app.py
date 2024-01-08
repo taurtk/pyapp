@@ -48,7 +48,7 @@ user_inputs = {
     'step1': {'input1': '', 'input2': '', 'input3': '', 'input4': ''},
     'step2': {'input1': '', 'input2': '', 'input3': '', 'input4': ''},
     'step3': {'input1': '', 'input2': '', 'input3': '', 'input4': '','input5':'','input6':'','input7':''},
-    'step4': {'input1': '', 'input2': ''},
+    'step4': {'input1': '', 'input2': '','input3': ''},
 }
 
 
@@ -74,7 +74,9 @@ def generate_feedback():
     |{user_inputs['step1']['input3']} After our talk we want them to believe
     |{user_inputs['step1']['input4']}
     The end objective of this pitch is
-    |{user_inputs['step1']['input2']} Based on these notes does it appear we have a clear objective for our presentation?"""
+    |{user_inputs['step1']['input2']} Is it clear or does it appear we have a clear objective for our presentation?"""
+
+    
         # # Loop through prompts and get responses from ChatGPT
     for prompt in prompts_for_analysis():
             # Call OpenAI API
@@ -86,8 +88,9 @@ def generate_feedback():
                 
             )
             # Append the response to the list
-        feedback =  response.choices[0].message.content
-        print(feedback)
+        feedback =  response.choices[0]['message']['content']
+        print(step11)
+        # print(feedback)
 
         
     return render_template('index.html', user_inputs=user_inputs, feedback=feedback)
@@ -111,7 +114,9 @@ def generate_feedback1():
     # pitch_input8 =user_input4 = user_inputs[3]
 
     step12 = f"""Here is the introduction of a pitch
-    we are planning to make | {user_inputs['step2']['input1']} by {user_inputs['step2']['input2']}  {user_inputs['step2']['input3']} {user_inputs['step2']['input4']} | Is this introduction clear, compelling and interesting ?
+    we are planning to make |
+      {user_inputs['step2']['input1']} by
+        {user_inputs['step2']['input2']} | {user_inputs['step2']['input3']}| {user_inputs['step2']['input4']} | Is this introduction clear, compelling and interesting ?
     """
         # # Loop through prompts and get responses from ChatGPT
     for prompt in prompts_for_analysis():
@@ -124,7 +129,7 @@ def generate_feedback1():
                 
             )
             # Append the response to the list
-        feedback =  response.choices[0].message.content
+        feedback =  response.choices[0]['message']['content']
         print(feedback)
 
 
@@ -169,7 +174,7 @@ The reason to believe is |
                 
             )
             # Append the response to the list
-        feedback =  response.choices[0].message.content
+        feedback =  response.choices[0]['message']['content']
         print(feedback)
 
    
@@ -211,12 +216,12 @@ this company could makea profit ?"""
                 
             )
             # Append the response to the list
-        feedback1 =  response.choices[0].message.content
+        feedback1 = response.choices[0]['message']['content']
         print(feedback1)
 
 
         
-    return render_template('step2.html', user_inputs=user_inputs, feedback=feedback+'\n \n  Feedback 2:'+feedback1)
+    return render_template('step2.html', user_inputs=user_inputs, feedback='Is the problem, unique selling point, reason to believe clear: \n'+feedback+'\n \n  Is there a compelling payoff :'+feedback1)
 
 
     
@@ -248,7 +253,7 @@ def generate_feedback3():
                 
             )
             # Append the response to the list
-        feedback =  response.choices[0].message.content
+        feedback =  response.choices[0]['message']['content']
         print(feedback)
 
         
@@ -274,7 +279,7 @@ def generate_pitch():
 
     Please write a script for a talk based on this content 
     Write the talk as a real talk without speaker notes Why is this pitch important to you? | {user_inputs['step1']['input1']}##What is the goal of your pitch? |{user_inputs['step1']['input2']} ##What does your audience believe before the pitch?         | {user_inputs['step1']['input3']}##What should your audience  believe after the pitch?      (and Why) | {user_inputs['step1']['input4']} ##Note: What happens in between is your pitch...  | ##In one line, what is your pitch? 
-    {user_inputs['step2']['input1']} ##Up to 3 supporting arguments Argument 1 |{user_inputs['step2']['input2']}## Argument 2 | {user_inputs['step2']['input3']}## Argument 3 |{user_inputs['step2']['input4']}####Here is core content of  pitch##PROBLEM - WHAT is the problem and for whom         | {user_inputs['step3']['input1']}  ##PROOF - Why should we believe you can do this          |  {user_inputs['step3']['input2']} ##PAYOFF - Dramatic Difference (how their life will be better/different) | {user_inputs['step3']['input3']}##PROFIT (If applicable) - how will this product/service make a profit | {user_inputs['step3']['input4']}##PASSION - Why are you excited about this |{user_inputs['step3']['input5']}####What follows  is the content for the last slide of the presentation##Call to action (what after your pitch) -
+    {user_inputs['step2']['input1']} ##Up to 3 supporting arguments Argument 1 |{user_inputs['step2']['input2']}## Argument 2 | {user_inputs['step2']['input3']}## Argument 3 |{user_inputs['step2']['input4']}####Here is core content of  pitch##PROBLEM - WHAT is the problem and for whom         | {user_inputs['step3']['input1']}  .##PROMISE- In clear simple terms, what is the benefit you are offering   |{user_inputs['step1']['input2']}      ##PROOF - Why should we believe you can do this          |  {user_inputs['step3']['input3']} ##PAYOFF - Dramatic Difference (how their life will be better/different) | {user_inputs['step3']['input4']}##PROFIT (If applicable) - how will this product/service make a profit | {user_inputs['step3']['input5']}##PASSION - Why are you excited about this |{user_inputs['step3']['input6']}####What follows  is the content for the last slide of the presentation##Call to action (what after your pitch) -
     (1 Sentence)  [Try to include what they will be saying yes to in concrete terms] | {user_inputs['step4']['input1']}##Why do this (up to 3 reasons)  Note: Include why do this Now Reason | {user_inputs['step4']['input2']}##Your last line
     What do they need to remember /do |  
             | note |
@@ -290,7 +295,7 @@ def generate_pitch():
                 
             )
             # Append the response to the list
-        feedback =  response.choices[0].message.content
+        feedback =  response.choices[0]['message']['content']
         # print(feedback)
         # print('i amhere ',pitch_input1)
 
@@ -356,22 +361,6 @@ def generate_pitch():
 #     return render_template('index.html', user_inputs=user_inputs, feedback=feedback)
 
 
-@app.route('/progress')
-def progress():
- def generate():
-     x = 0
-     while x <= 100:
-         yield f"data:{x}\n\n"
-         x += 10
-         time.sleep(1)
- return Response(generate(), mimetype='text/event-stream')
-
-@app.route('/greet', methods=['POST'])
-def greet():
-    if request.method == 'POST':
-        user_name = request.form['username']
-        greeting = f"Hello, {user_name}! Welcome to the Flask App."
-        return render_template('greet.html', greeting=greeting)
 
 if __name__ == '__main__':
     app.run(debug=True)
