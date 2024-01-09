@@ -125,37 +125,35 @@ var images=['data:image/bmp;base64,iVBORw0KGgoAAAANSUhEUgAAAmMAAABjCAYAAADXVwdUA
 
                     <!-- Question table -->
                     <div class="ml-100 container_"> 
-                    <form action="/generate_feedback3" method="post">
-                        <div class="container mt-4 tablecontainer">
-                            <div class="col-md-8">
-                            <table class="table table-bordered table-no-left-border">
-                                <tbody>
-                                <tr>
-                                  <td><strong>Call to Action - What after your pitch</strong></td>
-                                  <td>
-                                    <textarea class="form-control w-100" rows="4" required cols="50" name="user_input1"   placeholder="Please  enter or edit your  answer"></textarea>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td><strong>Why do this (up to 3 reasons)</strong></td>
-                                  <td>
-                                    <textarea class="form-control w-100" rows="4" required cols="50" name="user_input2"   placeholder="Please  enter or edit your  answer"></textarea>
-                                  </td>
-                                </tr>
-                                <tr>
-                                    <td><strong>"Your last line
-                                        What do they need to remember /do"</strong></td>
-                                    <td>
-                                      <textarea class="form-control w-100" rows="4" required cols="50" name="user_input3"   placeholder="Please  enter or edit your  answer"></textarea>
-                                    </td>
-                                  </tr>
-                                </tbody>
+                        <form action="/generate_feedback3" method="post">
+                            <div class="container mt-4 tablecontainer">
+                               <div class="col-md-8">
+                               <table class="table table-bordered table-no-left-border">
+                                   <tbody>
+                                       <tr>
+                                          <td><strong>Call to Action - What after your pitch</strong></td>
+                                          <td>
+                                            <textarea class="form-control w-100" rows="4" required cols="50" name="{{ 'user_input1' }}"  placeholder="Please enter or edit your answer">{{ user_inputs.step4['input1'] }}</textarea>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <td><strong>Why do this (up to 3 reasons)</strong></td>
+                                          <td>
+                                            <textarea class="form-control w-100" rows="4" required cols="50" name="{{ 'user_input2' }}"  placeholder="Please enter or edit your answer">{{ user_inputs.step4['input2'] }}</textarea>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <td><strong>"Your last line What do they need to remember /do"</strong></td>
+                                          <td>
+                                            <textarea class="form-control w-100" rows="4" required cols="50" name="{{ 'user_input3' }}"  placeholder="Please enter or edit your answer">{{ user_inputs.step4['input3'] }}</textarea>
+                                          </td>
+                                       </tr>
+                                   </tbody>
                                </table>
+                               <button class="btn btn-primary" type="submit">Generate Feedback</button>
                                </div>
-                               
-                            <button class="btn btn-primary" type="submit">Generate Feedback</button>
-                        </div>
-                    </form>
+                            </div>
+                           </form>
                     <h3><strong>AI Feedback: Can anyone understand why they should take the action you are suggesting ?
 
                     </strong></h3>

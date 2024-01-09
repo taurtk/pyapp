@@ -125,54 +125,41 @@
 
                     <!-- Question table -->
                     <div class="ml-100 container_"> 
-                    <form action="/generate_feedback1" method="post">
-                        <div class="container mt-4 tablecontainer">
-                            <div class="col-md-8">
-                            <table class="table table-bordered table-no-left-border">
-                                <tbody>
-                                  <tr>
-                                    <td><strong>"In one line, what is your pitch? 
-                                        (this is usually your opening)"                                    </strong></td>
-                                    <td>
-                                      <textarea class="form-control w-100" cols="50" rows="4" name="user_input1" required   placeholder="Please  enter or edit your  answer"></textarea>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td><strong>Up to 3 supporting arguments (Argument 1)</strong></td>
-                                    <td>
-                                        <textarea class="form-control w-100" rows="4" cols="50" name="user_input2"   placeholder="Please  enter or edit your  answer"></textarea>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><strong>(Argument 2)</strong></td> <!-- Empty cell to match the layout -->
-                                    <td>
-                                        <textarea class="form-control" rows="4" name="user_input3" required   placeholder="Please  enter or edit your  answer"></textarea>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><strong>(Argument 3)</strong></td> <!-- Empty cell to match the layout -->
-                                    <td>
-                                        <textarea class="form-control" rows="4" name="user_input4" required   placeholder="Please  enter or edit your  answer"></textarea>
-                                    </td>
-                                </tr>
-                                  
-                                  <!-- <tr>
-                                    <td><strong>Supporting Argument 2 - Discounts based on your dates of periods and stage of pregnancy</strong></td>
-                                    <td>
-                                      <textarea class="form-control" rows="4">By offering personalized discounts, we ensure that users receive relevant and beneficial deals tailored to their specific needs during pregnancy.</textarea>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td><strong>Supporting Argument 3 - Free educational content</strong></td>
-                                    <td>
-                                      <textarea class="form-control" rows="4">Our app provides comprehensive educational content to help users understand and manage their health during pregnancy, promoting overall wellbeing.</textarea>
-                                    </td>
-                                  </tr> -->
-                                </tbody>
-                               </table>
-                            <button class="btn btn-primary" type="submit">Generate Feedback</button>
-                        </div>
-                    </form>
+                        <form action="/generate_feedback1" method="post">
+                            <div class="container mt-4 tablecontainer">
+                                <div class="col-md-8">
+                                <table class="table table-bordered table-no-left-border">
+                                    <tbody>
+                                     <tr>
+                                       <td><strong>"In one line, what is your pitch? 
+                                           (this is usually your opening)"                                 </strong></td>
+                                       <td>
+                                         <textarea class="form-control w-100" cols="50" rows="4" name="{{ 'user_input1' }}" required  placeholder="Please enter or edit your answer">{{ user_inputs.step2['input1'] }}</textarea>
+                                       </td>
+                                     </tr>
+                                     <tr>
+                                       <td><strong>Up to 3 supporting arguments (Argument 1)</strong></td>
+                                       <td>
+                                           <textarea class="form-control w-100" rows="4" cols="50" name="{{ 'user_input2' }}"  placeholder="Please enter or edit your answer">{{ user_inputs.step2['input2'] }}</textarea>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td><strong>(Argument 2)</strong></td> <!-- Empty cell to match the layout -->
+                                       <td>
+                                           <textarea class="form-control" rows="4" name="{{ 'user_input3' }}" required  placeholder="Please enter or edit your answer">{{ user_inputs.step2['input3'] }}</textarea>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td><strong>(Argument 3)</strong></td> <!-- Empty cell to match the layout -->
+                                       <td>
+                                           <textarea class="form-control" rows="4" name="{{ 'user_input4' }}" required  placeholder="Please enter or edit your answer">{{ user_inputs.step2['input4'] }}</textarea>
+                                       </td>
+                                    </tr>
+                                    </tbody>
+                                   </table>
+                                <button class="btn btn-primary" type="submit">Generate Feedback</button>
+                            </div>
+                        </form>
                     
                     <h3><strong>AI Feedback: Is the purpose of your pitch clear?</strong></h3>
                     <!-- Output section -->

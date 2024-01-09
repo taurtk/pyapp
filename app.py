@@ -20,20 +20,19 @@ def welcome():
 
 @app.route('/index')
 def index():
-    return render_template('index.html')
-
+    return render_template('index.html', user_inputs=user_inputs)
 
 @app.route('/step1')
 def step1():
-    return render_template('step1.html')
+   return render_template('step1.html', user_inputs=user_inputs)
 
 @app.route('/step2')
 def step2():
-    return render_template('step2.html')
+    return render_template('step2.html', user_inputs=user_inputs)
 
 @app.route('/step3')
 def step3():
-    return render_template('step3.html')
+    return render_template('step3.html', user_inputs=user_inputs)
 
 @app.route('/pitch')
 def pitch():
@@ -52,212 +51,233 @@ user_inputs = {
 }
 
 
-@app.route('/generate_feedback', methods=['POST'])
+@app.route('/generate_feedback',  methods=['GET', 'POST'])
 def generate_feedback():
     # Define a list to store user inputs
-    user_inputs.setdefault('step1', {})
+    if request.method == 'POST':
+        user_inputs.setdefault('step1', {})
 
-# Update 'step1' with user inputs
-    for i in range(1, 5):
-        input_key = f'input{i}'
-        user_inputs['step1'][input_key] = request.form[f'user_input{i}']
-    # try:
-#    # Code that might raise a ZeroDivisionError    
-#     pitch_input1 =user_input = user_inputs[0]
-#     pitch_input2 =user_input2 = user_inputs[1]
-#     pitch_input3 =user_input3 = user_inputs[2]
-#     pitch_input4 =user_input4 = user_inputs[3]
-    # print('i am here',pitch_input1)
-
-    
-    step11 = f"""Here are some notes on a presentation we are preparing. We think people believe the following now
-    |{user_inputs['step1']['input3']} After our talk we want them to believe
-    |{user_inputs['step1']['input4']}
-    The end objective of this pitch is
-    |{user_inputs['step1']['input2']} Is it clear or does it appear we have a clear objective for our presentation?"""
-
-    
-        # # Loop through prompts and get responses from ChatGPT
-    for prompt in prompts_for_analysis():
-            # Call OpenAI API
-        response = openai.ChatCompletion.create(
-                model = "gpt-3.5-turbo",  # You can choose a different engine
-                messages=[
-                {"role": "user", "content": step11}
-            ],
-                
-            )
-            # Append the response to the list
-        feedback =  response.choices[0]['message']['content']
-        print(step11)
-        # print(feedback)
+    # Update 'step1' with user inputs
+        for i in range(1, 5):
+            input_key = f'input{i}'
+            user_inputs['step1'][input_key] = request.form[f'user_input{i}']
+      
+        
+        step11 = f"""Here are some notes on a presentation we are preparing. We think people believe the following now
+        |{user_inputs['step1']['input3']} After our talk we want them to believe
+        |{user_inputs['step1']['input4']}
+        The end objective of this pitch is
+        |{user_inputs['step1']['input2']} Is it clear or does it appear we have a clear objective for our presentation?
+        Please start your reply with a simple yes|no|sort of 
+    then a explanation of your reply along with suggestions to improve
+        """
 
         
-    return render_template('index.html', user_inputs=user_inputs, feedback=feedback)
+            # # Loop through prompts and get responses from ChatGPT
+        for prompt in prompts_for_analysis():
+                # Call OpenAI API
+            response = openai.ChatCompletion.create(
+                    model = "gpt-3.5-turbo",  # You can choose a different engine
+                    messages=[
+                    {"role": "user", "content": step11}
+                ],
+                    
+                )
+                # Append the response to the list
+            feedback =  response.choices[0]['message']['content']
+            print(step11)
+            # print(feedback)
+
+            
+        return render_template('index.html', user_inputs=user_inputs, feedback=feedback)
+    else:
+        return render_template('index.html')
 
 
-
-@app.route('/generate_feedback1', methods=['POST'])
+@app.route('/generate_feedback1',  methods=['GET', 'POST'])
 def generate_feedback1():
     # Define a list to store user inputs
-    user_inputs.setdefault('step2', {})
+    if request.method == 'POST':
+   
+        user_inputs.setdefault('step2', {})
 
-# Update 'step1' with user inputs
-    for i in range(1, 5):
-        input_key = f'input{i}'
-        user_inputs['step2'][input_key] = request.form[f'user_input{i}']
-    # try:
-   # Code that might raise a ZeroDivisionError    
-    # pitch_input5 = user_input = user_inputs[0]
-    # pitch_input6 =user_input2 = user_inputs[1]
-    # pitch_input7 = user_input3 = user_inputs[2]
-    # pitch_input8 =user_input4 = user_inputs[3]
+    # Update 'step1' with user inputs
+        for i in range(1, 5):
+            input_key = f'input{i}'
+            user_inputs['step2'][input_key] = request.form[f'user_input{i}']
+        # try:
+    # Code that might raise a ZeroDivisionError    
+        # pitch_input5 = user_input = user_inputs[0]
+        # pitch_input6 =user_input2 = user_inputs[1]
+        # pitch_input7 = user_input3 = user_inputs[2]
+        # pitch_input8 =user_input4 = user_inputs[3]
 
-    step12 = f"""Here is the introduction of a pitch
-    we are planning to make |
-      {user_inputs['step2']['input1']} by
-        {user_inputs['step2']['input2']} | {user_inputs['step2']['input3']}| {user_inputs['step2']['input4']} | Is this introduction clear, compelling and interesting ?
-    """
-        # # Loop through prompts and get responses from ChatGPT
-    for prompt in prompts_for_analysis():
-            # Call OpenAI API
-        response = openai.ChatCompletion.create(
-                model = "gpt-3.5-turbo",  # You can choose a different engine
-                messages=[
-                {"role": "user", "content": step12}
-            ],
-                
-            )
-            # Append the response to the list
-        feedback =  response.choices[0]['message']['content']
-        print(feedback)
-
-
-        
-    return render_template('step1.html', user_inputs=user_inputs, feedback=feedback)
+        step12 = f"""Here is the introduction of a pitch
+        we are planning to make |
+        {user_inputs['step2']['input1']} by
+            {user_inputs['step2']['input2']} | {user_inputs['step2']['input3']}| {user_inputs['step2']['input4']} | 
+            Is this introduction clear, compelling and interesting ?
+        """
+            # # Loop through prompts and get responses from ChatGPT
+        for prompt in prompts_for_analysis():
+                # Call OpenAI API
+            response = openai.ChatCompletion.create(
+                    model = "gpt-3.5-turbo",  # You can choose a different engine
+                    messages=[
+                    {"role": "user", "content": step12}
+                ],
+                    
+                )
+                # Append the response to the list
+            feedback =  response.choices[0]['message']['content']
+            print(feedback)
 
 
-@app.route('/generate_feedback2', methods=['POST'])
+            
+        return render_template('step1.html', user_inputs=user_inputs, feedback=feedback)
+    else:
+       return render_template('step1.html')
+
+
+@app.route('/generate_feedback2',  methods=['GET', 'POST'])
 def generate_feedback2():
     # Define a list to store user inputs
-    for i in range(1, 8):
-        input_key = f'input{i}'
-        user_inputs['step3'][input_key] = request.form[f'user_input{i}']
-    # try:
-   # Code that might raise a ZeroDivisionError    
-    # pitch_input8 =user_input = user_inputs[0]
-    # pitch_input9 =user_input2 = user_inputs[1]
-    # pitch_input10 =user_input3 = user_inputs[2]
-    # pitch_input11 =user_input4 = user_inputs[3]
-    # pitch_input12 =user_input5 = user_inputs[4]
-
+    if request.method == 'POST':
+        for i in range(1, 8):
+            input_key = f'input{i}'
+            user_inputs['step3'][input_key] = request.form[f'user_input{i}']
+        # try:
     
-   
-
-    step21=f"""Here are 3 parts of a presenation we are are working on  
-We aim to solve this "problem' 
-|{user_inputs['step3']['input1']}
-The benefit we offer is |
-|{user_inputs['step3']['input2']}
-The reason to believe is | 
-|{user_inputs['step3']['input3']} Is the problem 
-, benefit and reasons to bleieve clear ?"""
-
-        # # Loop through prompts and get responses from ChatGPT
-    for prompt in prompts_for_analysis():
-            # Call OpenAI API
-        response = openai.ChatCompletion.create(
-                model = "gpt-3.5-turbo",  # You can choose a different engine
-                messages=[
-                {"role": "user", "content": step21}
-            ],
-                
-            )
-            # Append the response to the list
-        feedback =  response.choices[0]['message']['content']
-        print(feedback)
-
-   
-    step22=f"""Earlier we shared three parts 
-of a presentation. 
-These are | We aim to solve this 
-"problem' |{user_inputs['step3']['input1']}
-The benefit we offer is |{user_inputs['step3']['input2']}
-The reason to believe is | {user_inputs['step3']['input3']}
-We want plan to make this promise to people
-|We want plan to make this promise to people
-|{user_inputs['step3']['input5']} and profits from 
- {user_inputs['step3']['input6']} Is this promise clear and 
-compelling ?
-
-Here are they key elements of our
-business pitch | PROBLEM -
-WHAT is the problem and for whom   
-{user_inputs['step3']['input1']} PROMISE- In clear simple terms, 
-what is the benefit you are offering       
-{user_inputs['step3']['input2']} 
-PROOF -3
-PAYOFF - Dramatic Difference (how their life 
-                              
-  will be better/different)4 PAYOFF - Dramatic Difference 
-(how their life will be better/different)
-{user_inputs['step3']['input5']}
-Based on this pitch is their clear evidence 
-this company could makea profit ?"""
-    
-     # # Loop through prompts and get responses from ChatGPT
-    for prompt in prompts_for_analysis():
-            # Call OpenAI API
-        response = openai.ChatCompletion.create(
-                model = "gpt-3.5-turbo",  # You can choose a different engine
-                messages=[
-                {"role": "user", "content": step22}
-            ],
-                
-            )
-            # Append the response to the list
-        feedback1 = response.choices[0]['message']['content']
-        print(feedback1)
-
 
         
-    return render_template('step2.html', user_inputs=user_inputs, feedback='Is the problem, unique selling point, reason to believe clear: \n'+feedback+'\n \n  Is there a compelling payoff :'+feedback1)
+    
+
+        step21=f"""Here are 3 parts of a presenation we are are working on  
+    We aim to solve this "problem' 
+    |{user_inputs['step3']['input1']}
+    The benefit we offer is |
+    |{user_inputs['step3']['input2']}
+    The reason to believe is | 
+    |{user_inputs['step3']['input3']} Is the problem 
+    , benefit and reasons to believe clear ?"""
+
+            # # Loop through prompts and get responses from ChatGPT
+        for prompt in prompts_for_analysis():
+                # Call OpenAI API
+            response = openai.ChatCompletion.create(
+                    model = "gpt-3.5-turbo",  # You can choose a different engine
+                    messages=[
+                    {"role": "user", "content": step21}
+                ],
+                    
+                )
+                # Append the response to the list
+            feedback =  response.choices[0]['message']['content']
+            print(feedback)
+
+    
+        step22=f"""Earlier we shared three parts 
+    of a presentation. 
+    These are | We aim to solve this 
+    "problem' |{user_inputs['step3']['input1']}
+    The benefit we offer is |{user_inputs['step3']['input2']}
+    The reason to believe is | {user_inputs['step3']['input3']}
+    We want plan to make this promise to people
+    |We want plan to make this promise to people
+    |{user_inputs['step3']['input5']} and profits from 
+    {user_inputs['step3']['input6']} Is this promise clear and 
+    compelling ?
+    """
+        step23=f"""
+    Here are they key elements of our
+    business pitch | PROBLEM -
+    WHAT is the problem and for whom   
+    {user_inputs['step3']['input1']} PROMISE- In clear simple terms, 
+    what is the benefit you are offering       
+    {user_inputs['step3']['input2']} 
+    PROOF -3
+    PAYOFF - Dramatic Difference (how their life 
+                                
+    will be better/different)4 PAYOFF - Dramatic Difference 
+    (how their life will be better/different)
+    {user_inputs['step3']['input5']}
+    Based on this pitch is their clear evidence 
+    this company could makea profit ?"""
+        
+        # # Loop through prompts and get responses from ChatGPT
+        for prompt in prompts_for_analysis():
+                # Call OpenAI API
+            response = openai.ChatCompletion.create(
+                    model = "gpt-3.5-turbo",  # You can choose a different engine
+                    messages=[
+                    {"role": "user", "content": step22}
+                ],
+                    
+                )
+                # Append the response to the list
+            feedback1 = response.choices[0]['message']['content']
+            print(feedback1)
+            
+            for prompt in prompts_for_analysis():
+                # Call OpenAI API
+                response = openai.ChatCompletion.create(
+                        model = "gpt-3.5-turbo",  # You can choose a different engine
+                        messages=[
+                        {"role": "user", "content": step23}
+                    ],
+                        
+                    )
+            feedback2 = response.choices[0]['message']['content']
+            print(feedback2)
+
+
+            
+        return render_template('step2.html', user_inputs=user_inputs,
+                                feedback='Is the problem, unique selling point, reason to believe clear: \n'
+                                +feedback+'\n \n  Is there a compelling payoff \n 1.) :'
+                                +feedback1+"\n \n 2.)"+feedback2)
+    else:
+        return render_template('step2.html')
+                            
 
 
     
-@app.route('/generate_feedback3', methods=['POST'])
+@app.route('/generate_feedback3',  methods=['GET', 'POST'])
 def generate_feedback3():
     # Define a list to store user inputs
-    for i in range(1, 3):
-        input_key = f'input{i}'
-        user_inputs['step4'][input_key] = request.form[f'user_input{i}']
-    # try:
-   # Code that might raise a ZeroDivisionError    
-    # pitch_input13 =user_input = user_inputs[0]
-    # pitch_input14 = user_input2 = user_inputs[1]
-    
-
-    step3= f"""This is what we want people to do at the end of this talk
-      | {user_inputs['step4']['input1']}
-      This is why they should do this 
-      |{user_inputs['step4']['input2']}
-        Can anyone understand why they should take this action ?"""
-        # # Loop through prompts and get responses from ChatGPT
-    for prompt in prompts_for_analysis():
-            # Call OpenAI API
-        response = openai.ChatCompletion.create(
-                model = "gpt-3.5-turbo",  # You can choose a different engine
-                messages=[
-                {"role": "user", "content": step3}
-            ],
-                
-            )
-            # Append the response to the list
-        feedback =  response.choices[0]['message']['content']
-        print(feedback)
-
+    if request.method == 'POST':
+        for i in range(1, 4):
+            input_key = f'input{i}'
+            user_inputs['step4'][input_key] = request.form[f'user_input{i}']
+        # try:
+    # Code that might raise a ZeroDivisionError    
+        # pitch_input13 =user_input = user_inputs[0]
+        # pitch_input14 = user_input2 = user_inputs[1]
         
-    return render_template('step3.html', user_inputs=user_inputs, feedback=feedback)
+
+        step3= f"""This is what we want people to do at the end of this talk
+        | {user_inputs['step4']['input1']}
+        This is why they should do this 
+        |{user_inputs['step4']['input2']}
+            Can anyone understand why they should take this action ?"""
+            # # Loop through prompts and get responses from ChatGPT
+        for prompt in prompts_for_analysis():
+                # Call OpenAI API
+            response = openai.ChatCompletion.create(
+                    model = "gpt-3.5-turbo",  # You can choose a different engine
+                    messages=[
+                    {"role": "user", "content": step3}
+                ],
+                    
+                )
+                # Append the response to the list
+            feedback =  response.choices[0]['message']['content']
+            print(feedback)
+
+            
+        return render_template('step3.html', user_inputs=user_inputs, feedback=feedback)
+    else:
+        return render_template('step3.html')
 
 
 @app.route('/generate_pitch', methods=['POST'])
@@ -278,10 +298,36 @@ def generate_pitch():
     Questions asked are shown first our replies follow after a | symbol 
 
     Please write a script for a talk based on this content 
-    Write the talk as a real talk without speaker notes Why is this pitch important to you? | {user_inputs['step1']['input1']}##What is the goal of your pitch? |{user_inputs['step1']['input2']} ##What does your audience believe before the pitch?         | {user_inputs['step1']['input3']}##What should your audience  believe after the pitch?      (and Why) | {user_inputs['step1']['input4']} ##Note: What happens in between is your pitch...  | ##In one line, what is your pitch? 
-    {user_inputs['step2']['input1']} ##Up to 3 supporting arguments Argument 1 |{user_inputs['step2']['input2']}## Argument 2 | {user_inputs['step2']['input3']}## Argument 3 |{user_inputs['step2']['input4']}####Here is core content of  pitch##PROBLEM - WHAT is the problem and for whom         | {user_inputs['step3']['input1']}  .##PROMISE- In clear simple terms, what is the benefit you are offering   |{user_inputs['step1']['input2']}      ##PROOF - Why should we believe you can do this          |  {user_inputs['step3']['input3']} ##PAYOFF - Dramatic Difference (how their life will be better/different) | {user_inputs['step3']['input4']}##PROFIT (If applicable) - how will this product/service make a profit | {user_inputs['step3']['input5']}##PASSION - Why are you excited about this |{user_inputs['step3']['input6']}####What follows  is the content for the last slide of the presentation##Call to action (what after your pitch) -
-    (1 Sentence)  [Try to include what they will be saying yes to in concrete terms] | {user_inputs['step4']['input1']}##Why do this (up to 3 reasons)  Note: Include why do this Now Reason | {user_inputs['step4']['input2']}##Your last line
-    What do they need to remember /do |  
+    Write the talk as a real talk without speaker
+      notes ##Why is this pitch important to you?
+        | {user_inputs['step1']['input1']}
+        ##What is the goal of your pitch? 
+        |{user_inputs['step1']['input2']} 
+        ##What does your audience believe 
+        before the pitch?         |
+          {user_inputs['step1']['input3']}
+          ##What should your audience  believe after the pitch?    
+            (and Why) | {user_inputs['step1']['input4']} 
+            ##Note: What happens in between is your pitch...  |
+             ##In one line, what is your pitch? 
+
+    {user_inputs['step2']['input1']} 
+    ##Up to 3 supporting arguments Argument 1
+     |{user_inputs['step2']['input2']}## Argument 2 |
+       {user_inputs['step2']['input3']}## 
+       Argument 3 |{user_inputs['step2']['input4']}
+       ##Here is core content of  pitch##PROBLEM - WHAT is the problem and for whom      
+          | {user_inputs['step3']['input1']}  
+          .##PROMISE- In clear simple terms, what is the benefit you are offering   |{user_inputs['step3']['input2']}    
+              ##PROOF - Why should we believe you can do this          |  {user_inputs['step3']['input3']} 
+              ##PAYOFF - Dramatic Difference (how their life will be better/different) | {user_inputs['step3']['input4']}
+              ##PROFIT (If applicable) - how will this product/service make a profit | {user_inputs['step3']['input5']}
+              ##PASSION - Why are you excited about this |{user_inputs['step3']['input6']}
+              ##What follows  is the content for the last slide of the presentation##Call to action (what after your pitch) -
+    (1 Sentence)  [Try to include what they will be saying yes to in concrete terms] | 
+    {user_inputs['step4']['input1']}##Why do this (up to 3 reasons)  Note: Include why do this Now Reason | 
+    {user_inputs['step4']['input2']}##Your last line{user_inputs['step4']['input3']}
+    What do they need to remember /do |  | Go to our site 
             | note |
             Please remove placeholders from the final pitch"""
         # # Loop through prompts and get responses from ChatGPT

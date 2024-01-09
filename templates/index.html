@@ -175,58 +175,50 @@
                                     <div class="row">
                                         <div class="col-md-8">
                                             <table class="table table-bordered table-no-left-border">
-                                                <tbody>
-                                                    <tr>
-                                                        
-                                                    </tr>
-                                                    <tr>
-                                                        <td><strong>Why is this pitch important to you?</strong></td>
-                                                        <td>
-                                                            <textarea class="form-control wide-textarea w-100"
-                                                                placeholder="Please  enter or edit your  answer"
-                                                                rows="4" cols="50" name="user_input1" required></textarea>
-                                                        </td>
-                                                    </tr>
-                                                     <tr>
-                                                        <td><strong>What is the goal of your pitch?</strong></td>
-                                                        <td>
-                                                            <textarea class="form-control" rows="4"
-                                                                placeholder="Please  enter or edit your  answer"
-                                                                name="user_input2" required></textarea>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><strong>What does your audience believe before the
-                                                                pitch?</strong></td>
-                                                        <td>
-                                                            <textarea class="form-control" rows="4"
-                                                                placeholder="Please  enter or edit your  answer"
-                                                                name="user_input3" required></textarea>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><strong>What should your audience believe after the pitch?
-                                                                (and
-                                                                Why)</strong></td>
-                                                        <td>
-                                                            <textarea class="form-control" rows="4"
-                                                                placeholder="Please  enter or edit your  answer"
-                                                                name="user_input4" required></textarea>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
+                                               <tbody>
+                                                   <tr>
+                                                       <td><strong>Why is this pitch important to you?</strong></td>
+                                                       <td>
+                                                           <textarea class="form-control wide-textarea w-100"
+                                                              placeholder="Please enter or edit your answer"
+                                                              rows="4" cols="50" name="{{ 'user_input1' }}" required>{{ user_inputs.step1['input1'] }}</textarea>
+                                                       </td>
+                                                   </tr>
+                                                   <tr>
+                                                       <td><strong>What is the goal of your pitch?</strong></td>
+                                                       <td>
+                                                           <textarea class="form-control" rows="4"
+                                                              placeholder="Please enter or edit your answer"
+                                                              name="{{ 'user_input2' }}" required>{{ user_inputs.step1['input2'] }}</textarea>
+                                                       </td>
+                                                   </tr>
+                                                   <tr>
+                                                       <td><strong>What does your audience believe before the pitch?</strong></td>
+                                                       <td>
+                                                           <textarea class="form-control" rows="4"
+                                                              placeholder="Please enter or edit your answer"
+                                                              name="{{ 'user_input3' }}" required>{{ user_inputs.step1['input3'] }}</textarea>
+                                                       </td>
+                                                   </tr>
+                                                   <tr>
+                                                       <td><strong>What should your audience believe after the pitch? (and Why)</strong></td>
+                                                       <td>
+                                                           <textarea class="form-control" rows="4"
+                                                              placeholder="Please enter or edit your answer"
+                                                              name="{{ 'user_input4' }}" required>{{ user_inputs.step1['input4'] }}</textarea>
+                                                       </td>
+                                                   </tr>
+                                               </tbody>
                                             </table>
                                         </div>
                                     </div>
-
                                     <div class="row">
                                         <div class="col-md-6">
                                             <button class="btn btn-primary" type="submit">Generate Feedback</button>
                                         </div>
                                     </div>
                                 </div>
-
-                            </form>
+                             </form>
                             <h3><strong>AI Feedback: Is the purpose of your pitch clear?</strong></h3>
                             <!-- Output section -->
                             <div class="output">
