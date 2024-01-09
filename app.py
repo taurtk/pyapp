@@ -3,7 +3,11 @@ from prompts import step11,step12
 app = Flask(__name__)
 import openai
 from flask import request
-import time
+from pymongo import MongoClient
+# mongodb+srv://taurtk:Hamida123@cluster0.hbfko.mongodb.net/matrimony?retryWrites=true&w=majority
+
+client = MongoClient("mongodb+srv://taurtk123:NehaIsMyLife@cluster0.mi1o3.mongodb.net/pyapp?retryWrites=true&w=majority")
+
 
 
 
@@ -289,6 +293,9 @@ def generate_pitch():
 #     user_input = user_inputs[0]
 #     user_input2 = user_inputs[1]
     # print('i amhere ',pitch_input1)
+    db = client["pyapp"]
+    collection = db["pitch"]
+    collection.insert_one(user_inputs)
     pitch_prompt= f"""We have been working on 
           pitch and need help with a script for the pitch 
 

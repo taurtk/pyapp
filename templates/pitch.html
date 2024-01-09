@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     <title>Ai4innovation Toolkit</title>
@@ -185,23 +186,7 @@
                             <tbody>
 
                                 <button class="btn btn-primary" type="submit">Generate Pitch</button>
-                                <div class="output">
-                                    <div id="response1">
-                                        <div class="lottie-animation" data-animation-type="lottie"
-                                            data-src="https://assets.website-files.com/640fa33f33c6024cf3e800d6/6411fffbd7d4478b7afe980a_16766-forget-password-animation.json"
-                                            data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0"
-                                            data-renderer="svg" data-duration="0"></div>
-
-
-                                        {% if feedback %}
-                                        <h3>Generated Pitch:</h3>
-                                        <p class="form-control">{{ feedback }}</p>
-                                        {% else %}
-                                        <p class="form-control" rows="9">We are creating your request. This can take up
-                                            to 20 seconds...</p>
-                                        {% endif %}
-                                        <!-- Additional feedback goes here -->
-                                    </div>
+                               
                                     <br>
                                     
                                 </div>
@@ -209,6 +194,33 @@
                             </tbody>
                         </table>
                     </form>
+                    <span><button onclick="copyToClipboard('generatedPitch')"><i class="fas fa-copy"></i></button></span>
+
+                    <div class="output">
+                        <div id="response1">
+                            <div class="lottie-animation" data-animation-type="lottie"
+                                data-src="https://assets.website-files.com/640fa33f33c6024cf3e800d6/6411fffbd7d4478b7afe980a_16766-forget-password-animation.json"
+                                data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0"
+                                data-renderer="svg" data-duration="0"></div>
+
+
+                            <!-- {% if feedback %}
+                            <h3>Generated Pitch:</h3>
+                            <p class="form-control">{{ feedback }}</p>
+                            {% else %}
+                            <p class="form-control" rows="9">We are creating your request. This can take up
+                                to 20 seconds...</p>
+                            {% endif %} -->
+                            
+
+                            {% if feedback %}
+                        <h3>Generated Pitch:</h3>
+                        <p id="generatedPitch" class="form-control">{{ feedback }}</p>
+                        {% else %}
+                        <p id="waitMessage" class="form-control" rows="9">We are creating your request. This can take up to 20 seconds...</p>
+                        {% endif %}
+                            <!-- Additional feedback goes here -->
+                        </div>
 
                     <button class="btn btn-primary" onclick="continueToNextPage()"> Next
                         </button>
@@ -225,8 +237,17 @@
             </div>
         </div>
     </div>
-
-
+<script>
+    function copyToClipboard(id) {
+        var element = document.getElementById(id);
+        var range = document.createRange();
+        window.getSelection().removeAllRanges();
+        range.selectNode(element);
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+     }
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
