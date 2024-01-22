@@ -6,13 +6,50 @@ step11 = """Here are some notes on a presentation we are preparing
 We think people believe the following now |
 {user_input3} .After our talk we want them to believe |{user_input4}.
  The end objective of this pitch is |{user_input2}Based on the these
-   notes does it appear we have a clear objective for our presentation
+   notes does it appear we have a clear objective for our presentation.
 """
 
 
 step12 = """"Here is the introduction of a pitch
  we are planning to make | {user_input} by {user_input1}  {user_input2} {user_input3} | Is this introduction clear, compelling and interesting ?"
 """
+
+
+step21="Here are 3 parts of a presenation we are are working on  
+We aim to solve this "problem' 
+|1
+The benefit we offer is |2
+The reason to believe is | 3  Is the problem 
+, benefit and reasons to bleieve clear ?"
+
+
+
+step22="Earlier we shared three parts 
+of a presentation. 
+These are | We aim to solve this 
+"problem' |1  
+The benefit we offer is |2 
+The reason to believe is | 3
+We want plan to make this promise to people
+|We want plan to make this promise to people
+|5 and profits from 
+ 6 Is this promise clear and 
+compelling ?
+
+Here are they key elements of our
+business pitch | PROBLEM -
+WHAT is the problem and for whom   
+1 PROMISE- In clear simple terms, 
+what is the benefit you are offering       
+2  
+PROOF -3
+PAYOFF - Dramatic Difference (how their life 
+                              
+  will be better/different)4 PAYOFF - Dramatic Difference 
+(how their life will be better/different)
+5
+Based on this pitch is their clear evidence 
+this company could makea profit ?"
 
 step2 ="""
 

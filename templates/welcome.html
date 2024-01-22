@@ -6,183 +6,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles1.css') }}">
     <title>Al Pitch Perfect</title>
-    <style>
-        .sidebar {
-            background-color: #49b6b6;
-            color: white;
-        }
-
-        .tablecontainer {
-            background-color: white;
-        }
-
-        .table-no-left-border td:first-child {
-            border-left: none;
-        }
-
-        .table-no-left-border td {
-            border-right: 1px solid #dee2e6;
-        }
-
-        .btn {
-            background-color: #49b6b6;
-        }
-
-        a {
-            text-decoration: none;
-            color: black;
-        }
-
-        .progressbar {
-            justify-content: center;
-            align-items: center;
-            margin-left: 150px;
-        }
-
-        .hero-title {
-            text-align: center;
-        }
-
-        .subtitle {
-            text-align: center;
-        }
-
-        .wide-textarea {
-            width: 100%;
-            /* You can adjust this value based on your preferences */
-        }
-
-        form {
-            align-items: center;
-            justify-content: center;
-        }
-
-        .container_ {
-            align-items: center;
-            justify-content: center;
-            margin-left: 150px;
-        }
-
-        body {
-            background-color: white;
-            color: #343a40;
-        }
-
-        .container {
-            margin-top: 50px;
-        }
-
-        h1, h2, h3 {
-            color: black;
-        }
-        .h4-special{
-            color: white
-        }
-
-        .green-check {
-            color: #28a745;
-        }
-
-        .green-check:before {
-            content: "\2713";
-            display: inline-block;
-            margin-right: 6px;
-        }
-
-        .get-started-btn {
-            background-color: #49b6b6;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 16px;
-            cursor: pointer;
-        }
-    </style>
+   
 </head>
 
-<body>
+<body class="body">
 
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Sidebar with background color -->
-            <div class="col-md-3 sidebar">
-                <!-- Your sidebar content goes here -->
-                <a href="/" class="w-inline-block">
-                    <img src="/static/Capture.PNG" alt="" class="image-2 img-fluid">
-                </a>
-                <div class="div-block-3 ">
-                    <h1 class="h4-special">
-                        <strong>The Ai4innovation toolkit</strong>
-                    </h1>
-                    <a href="#" class="button-tools-inline w-button">📡 Alignment</a>
-                    <ul>
-                        <li><a href="#" class="list-item point-button">Build Market Understanding(23)</a></li>
-                        <li><a href="#" class="list-item point-button">Clarify objectives(10)</a></li>
-                        <li><a href="#" class="list-item point-button">Write a TRUE North(App)</a></li>
-                    </ul>
+    <!-- <div class="section-9">
+                <div class="columns-2 w-row"> -->
+    <div class="column-11 w-col w-col-3">
+        <div class="div-block-6">
+            <a href="/" class="w-inline-block">
+                <img src="/static/Capture.PNG" alt="" class="image-2" />
+            </a>
+            <div class="div-block-3">
+                <h1 class="h4-special">
+                    <strong>The Ai4innovation toolkit</strong>
+                </h1>
+                <a href="#" class="button-tools-inline w-button">📡 Alignment</a>
+                <ul><a href="#" class="list-item point-button">Build Market Understanding(23)</a></ul>
+                <ul><a href="/clarifyObjective" class="list-item point-button">Clarify objectives(10)</a></ul>
+                <ul><a href="/WriteaTRUENorth" class="list-item point-button">Write a TRUE North(App) </a></ul>
 
-                    <a href="#" class="button-tools-inline w-button">💻 Build Ideas</a>
-                    <ul>
-                        <li><a href="#" class="list-item point-button">Clarify Challenge (30)</a></li>
-                        <li><a href="/build" class="list-item point-button">Build Ideas (76)</a></li>
-                        <li><a href="#" class="list-item point-button">Select winning concepts (App-in development)</a>
-                        </li>
-                    </ul>
+                <a href="#" class="button-tools-inline w-button">💻 Build Ideas</a>
+                <ul><a href="/ClarifyChallenge" class="list-item point-button">Clarify Challenge (30)</a></ul>
+                <ul><a href="/build" class="list-item point-button">Build Ideas (76)</a></ul>
+                <ul><a href="/SelectWinningConcepts" class="list-item point-button">Select winning concepts (App-in
+                        development)</a></ul>
 
-                    <a href="#" class="button-tools-inline w-button">💬 Communicate and Check</a>
-                    <ul>
-                        <li><a href="#" class="list-item point-button">Improve selling concept (26)</a></li>
-                        <li><a href="#" class="list-item point-button">Check Ideas (6)</a></li>
-                        <li><a href="#" class="list-item point-button">Kills or continue (App-in development)</a></li>
-                    </ul>
+                <a href="#" class="button-tools-inline w-button">💬 Communicate and Check</a>
+                <ul><a href="#" class="list-item point-button">Improve selling concept (26)</a></ul>
+                <ul><a href="#" class="list-item point-button">Check Ideas (6)</a></ul>
+                <ul><a href="#" class="list-item point-button">Kills or continue (App-in development) </a></ul>
 
-                    <a href="#" class="button-tools-inline w-button">🔮 Systematically Improve</a>
-                    <ul>
-                        <li><a href="#" class="list-item point-button">Business Analysis (24)</a></li>
-                        <li><a href="#" class="list-item point-button">Kill or continue (App-in development)</a></li>
-                    </ul>
+                <a href="#" class="button-tools-inline w-button">🔮 Systematically Improve</a>
+                <ul><a href="#" class="list-item point-button">Business Analysis (24)</a></ul>
+                <ul><a href="#" class="list-item point-button">Kill or continue (App-in development)</a></ul>
+                <!-- <ul><a href="#" class="list-item point-button">Write a TRUE North(App) </a></ul> -->
 
-                    <a href="#" class="button-tools-inline w-button">📊 Pitch</a>
-                    <ul>
-                        <li><a href="#" class="list-item point-button">Pitch Ideas (7)</a></li>
-                        <li><a href="#" class="list-item point-button">Pitch Template (App)</a></li>
-                        <li><a href="#" class="list-item point-button">Pitching Ideas (App)</a></li>
-                        <li><a href="#" class="list-item point-button">Business Review (App-in development)</a></li>
-                    </ul>
-                </div>
+                <a href="#" class="button-tools-inline w-button">📊 Pitch</a>
+                <ul><a href="#" class="list-item point-button">Pitch Ideas (7)</a></ul>
+                <ul><a href="#" class="list-item point-button">Pitch Template (App)</a></ul>
+                <ul><a href="#" class="list-item point-button">Pitch Review (App)</a></ul>
+                <ul><a href="#" class="list-item point-button">Business Review (App-in development)</a></ul>
+
             </div>
 
+        </div>
+    </div>
+    <div class="column-12 w-col w-col-9">
+        <div class="section">
             <div class="col-md-8 offset-md-1 text-left">
-                <h1>Al Pitch Perfect</h1>
-                <h2>Generate Kick-ass Pitches in 90 Minutes</h2>
+                <h1>Business Pitch With AI</h1>
+                <h2>You Have Only One Change To Create First Impression!</h2>
                 <p class="lead">White page to pitch in 90 minutes supported 3000+ Pitches submitted and reviewed.</p>
-
-                <div class="row mt-5">
-                    <div class="col-md-6">
-                        <h3 class="green-check">Trained expert AI advice</h3>
-                        <p>Get valuable insights and guidance from our AI expert.</p>
-
-                        <h3 class="green-check">A process to follow by Al</h3>
-                        <p>Follow a step-by-step process provided by our AI to create a great pitch.</p>
+                <h3 class="green-check" style="text-align: center;">Why Us?</h3>
+                <p class="lead">
+                    When developing an innovative concept, it'
+                     easy to lose sight of the big picture
+                    . The One-Minute-Pitch can create clarity by listing 
+                    the most important aspects for outsiders in
+                     a short time. Whether for practice purposes or
+                     in real life, presenting to investors or other
+                     audiences helps convey the essence of the product or service.</p>
+                     <div class="row mt-5">
+                        <div class="col-md-6">
+                            <h3 class="green-check">Trained expert AI advice</h3>
+                            <p>Get valuable insights and guidance from our AI expert.</p>
+    
+                        </div>
+    
+                        <div class="col-md-6">
+                            <h3 class="green-check">Step-by-Step Process</h3>
+                            <ul>
+                                <li class="green-check">Define your pitch objectives</li>
+                                <li class="green-check">Identify your target audience</li>
+                                <li class="green-check">Craft a compelling story</li>
+                                <li class="green-check">Refine and practice your pitch</li>
+                            </ul>
+                        </div>
                     </div>
-
-                    <div class="col-md-6">
-                        <h3 class="green-check">Step-by-Step Process</h3>
-                        <ul>
-                            <li class="green-check">Define your pitch objectives</li>
-                            <li class="green-check">Identify your target audience</li>
-                            <li class="green-check">Craft a compelling story</li>
-                            <li class="green-check">Refine and practice your pitch</li>
-                        </ul>
-                    </div>
-                </div>
 
                 <div class="col-md-12 text-center">
-                    <a href="/index" class="get-started-btn">Get Started</a>
+                    <a href="/index" class="get-started-btn w-button">Get Started</a>
                 </div>
 
                 <div class="row mt-5">

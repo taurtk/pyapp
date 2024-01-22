@@ -1,12 +1,13 @@
-from flask import Flask, render_template, request, Response
-from prompts import step11,step12
+from flask import Flask, render_template, request, session
+# from prompts import step11,step12
 app = Flask(__name__)
 import openai
 from flask import request
-from pymongo import MongoClient
-# mongodb+srv://taurtk:Hamida123@cluster0.hbfko.mongodb.net/matrimony?retryWrites=true&w=majority
+# from pymongo import MongoClient
 
-client = MongoClient("mongodb+srv://taurtk123:NehaIsMyLife@cluster0.mi1o3.mongodb.net/pyapp?retryWrites=true&w=majority")
+
+
+app.secret_key = 'taurtk'
 
 
 
@@ -24,7 +25,7 @@ def welcome():
 
 @app.route('/index')
 def index():
-    return render_template('index.html', user_inputs=user_inputs)
+    return render_template('index1.html', user_inputs=user_inputs)
 
 @app.route('/step1')
 def step1():
@@ -40,7 +41,7 @@ def step3():
 
 @app.route('/pitch')
 def pitch():
-    return render_template('pitch.html')
+    return render_template('pitch.html',user_inputs=user_inputs)
 
 @app.route('/more')
 def more():
@@ -59,7 +60,21 @@ user_inputs = {
 def generate_feedback():
     # Define a list to store user inputs
     if request.method == 'POST':
-        user_inputs.setdefault('step1', {})
+        # user_inputs.setdefault('step1', {})
+
+        # if 'user_inputs' not in session:
+        #     session['user_inputs'] = {}
+
+        # # cookies cache
+        # # session destroy krna hoga(invalid yha pr)
+        # # Update session with user inputs
+        # session['user_inputs']['step1'] = {
+        #     'input1': request.form.get('user_input1', ''),
+        #     'input2': request.form.get('user_input2', ''),
+        #     'input3': request.form.get('user_input3', ''),
+        #     'input4': request.form.get('user_input4', '')
+        # }
+
 
     # Update 'step1' with user inputs
         for i in range(1, 5):
@@ -92,10 +107,11 @@ def generate_feedback():
             print(step11)
             # print(feedback)
 
-            
-        return render_template('index.html', user_inputs=user_inputs, feedback=feedback)
+            # session.modified = True
+
+        return render_template('index1.html', user_inputs=user_inputs, feedback=feedback)
     else:
-        return render_template('index.html')
+        return render_template('index1.html')
 
 
 @app.route('/generate_feedback1',  methods=['GET', 'POST'])
@@ -293,9 +309,9 @@ def generate_pitch():
 #     user_input = user_inputs[0]
 #     user_input2 = user_inputs[1]
     # print('i amhere ',pitch_input1)
-    db = client["pyapp"]
-    collection = db["pitch"]
-    collection.insert_one(user_inputs)
+    # db = client["pyapp"]
+    # collection = db["pitch"]
+    # collection.insert_one(user_inputs)
     pitch_prompt= f"""We have been working on 
           pitch and need help with a script for the pitch 
 
@@ -353,7 +369,7 @@ def generate_pitch():
         # print('i amhere ',pitch_input1)
 
         
-    return render_template('pitch.html', user_inputs=user_inputs, feedback=feedback)
+    return render_template('pitch.html',user_inputs=user_inputs, feedback=feedback)
 
 
 

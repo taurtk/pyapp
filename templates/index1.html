@@ -180,11 +180,7 @@
     <div class="column-12 w-col w-col-9">
         <div class="section">
 
-            <h1> The Heart of your pitch
-
-
-
-            </h1>
+            <h1>Introduction</h1>
 
             <ol class="ProgressBar">
                 <li class="ProgressBar-step">
@@ -194,13 +190,13 @@
                     <span class="ProgressBar-stepLabel"> Your Intro Right</span> </a>
                 </li>
                 <li class="ProgressBar-step">
-               <a class="disabled-link" href="/step1">     <svg class="ProgressBar-icon" id="secondball">
+               <a class="disabled-link" href="/step1">     <svg class="ProgressBar-icon">
                         <use xlink:href="#checkmark-bold" />
                     </svg>
                     <span class="ProgressBar-stepLabel">Get Your Intro Right</span></a>
                 </li>
                 <li class="ProgressBar-step">
-                    <a class="disabled-link" href="/step2">   <svg class="ProgressBar-icon" id="thirdball">
+                    <a class="disabled-link" href="/step2">   <svg class="ProgressBar-icon">
                         <use xlink:href="#checkmark-bold" />
                     </svg>
                     <span class="ProgressBar-stepLabel">The Meat</span></a>
@@ -228,7 +224,7 @@
         <a href="#" onclick="history.back(); return false;" class="disabled-link" style="color: black;">
             <i class="fas fa-arrow-left"> Go Back</i>
         </a>
-        <!-- <ul class="unstyled-list no-list-style list-item" style="color: black; ">
+        <ul class="unstyled-list no-list-style list-item" style="color: black; ">
             <li ><strong>A step by step process to make a great pitch</strong></li>
             <li> <strong> Expert advice based on thousands of pitches</strong></li>
         </ul>
@@ -239,9 +235,9 @@
             <strong >Get started now.&nbsp;</strong>
 
 
-        </p> -->
+        </p>
 
-        <h6 class="heading " style="color: black; text-align: center;">Step 2: Content of the pitch</h6>
+        <h6 class="heading " style="color: black; text-align: center;">Step 1: Define your core message and objective</h6>
 
 
 
@@ -258,12 +254,12 @@
 
         <div class="container">
             <div>
-                <form action="/generate_feedback2" method="post">
+                <form action="/generate_feedback" method="post">
                 <div class=" ">
                     <div class="column-12 ">
                         <div class="div-block-6">
 
-                            <label for="userInput1" class="paragraph">PROBLEM - WHAT is the problem and for whom        	</label>
+                            <label for="userInput1" class="paragraph">Why is this pitch important to you?</label>
                             
                             <span>An description addresing the need for the problem you are solving.</span>
                             <br>
@@ -271,44 +267,25 @@
                                 People need an available and immediate shuttle service but today the market is dominated by traditional taxi companies that offer heavy complicated service and long waiting times</i></small>
                             <textarea class="form-control wide-textarea w-100 text-field w-input"
                             placeholder="Please enter or edit your answer"
-                            rows="4" cols="50" name="{{ 'user_input1' }}" required>{{ user_inputs.step3['input1'] }}</textarea>
+                            rows="4" cols="50" name="{{ 'user_input1' }}" required>{{ user_inputs.step1['input1'] }}</textarea>
 
-                            <label for="userInput1" class="paragraph">PROMISE- In clear simple terms, what is the benefit you are offering        	</label>
+                            <label for="userInput1" class="paragraph">What is the goal of your pitch?</label>
                             <textarea class="form-control text-field w-input" rows="4"
                                                               placeholder="Please enter or edit your answer"
-                                                              name="{{ 'user_input2' }}" required>{{ user_inputs.step3['input2'] }}</textarea>
+                                                              name="{{ 'user_input2' }}" required>{{ user_inputs.step1['input2'] }}</textarea>
 
-                            <label for="userInput1" class="paragraph">PROOF - Why should we believe you can do this         	    	</label>
+                            <label for="userInput1" class="paragraph">What does your audience believe before the pitch?        	</label>
                             <td>
                                 <textarea class="form-control text-field w-input" rows="4"
                                    placeholder="Please enter or edit your answer"
-                                   name="{{ 'user_input3' }}" required>{{ user_inputs.step3['input3'] }}</textarea>
+                                   name="{{ 'user_input3' }}" required>{{ user_inputs.step1['input3'] }}</textarea>
                             </td>
-                            <label for="userInput1" class="paragraph">Proof 2 - if available add testimonials	</label>
+                            <label for="userInput1" class="paragraph">What should your audience  believe after the pitch?      (and Why)	</label>
                             <td>
                                 <textarea class="form-control text-field w-input" rows="4"
                                    placeholder="Please enter or edit your answer"
-                                   name="{{ 'user_input4' }}" required>{{ user_inputs.step3['input4'] }}</textarea>
+                                   name="{{ 'user_input4' }}" required>{{ user_inputs.step1['input4'] }}</textarea>
                             </td>
-                            
-                            <label for="userInput1" class="paragraph">PAYOFF - Dramatic Difference (how their life will be better/different)      </label>
-                            <td>
-                                <textarea class="form-control text-field w-input" rows="4"
-                                   placeholder="Please enter or edit your answer"
-                                   name="{{ 'user_input5' }}" required>{{ user_inputs.step3['input5'] }}</textarea>
-                            </td>
-                            <label for="userInput6" class="paragraph">PROFIT (If applicable) - how will this product/service make a profit	</label>
-                            <td>
-                                <textarea class="form-control text-field w-input" rows="4"
-                                   placeholder="Please enter or edit your answer"
-                                   name="{{ 'user_input6' }}" required>{{ user_inputs.step3['input6'] }}</textarea>
-                            </td><label for="userInput7" class="paragraph">PASSION - Why are you excited about this	</label>
-                            <td>
-                                <textarea class="form-control text-field w-input" rows="4"
-                                   placeholder="Please enter or edit your answer"
-                                   name="{{ 'user_input7' }}" required>{{ user_inputs.step3['input7'] }}</textarea>
-                            </td>
-
                             <!-- <label for="Our-Business" class="input-instruction">Our project mission is</label>
                             <input type="text"  id="userInput1" class="text-field w-input"  placeholder="We want to help people grow, coaches and their coachees. Be perceived as the coaching platform in Europe." required=""/>
 
@@ -353,7 +330,7 @@
 
                 <br>
                 <br>
-                <button class="btn btn-primary w-button" id="advance" onclick="continueToNextPage()"> <a href="/step3">Advance</a>
+                <button class="btn btn-primary w-button" id="advance" onclick="continueToNextPage()"> <a href="/step1">Advance</a>
                 </button>
                 <p class="paragraph policies">
                     By using this tool, you agree to our <a href="#" target="_blank" class="link">Terms of Service and
