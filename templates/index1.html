@@ -228,6 +228,7 @@
             <li ><strong>A step by step process to make a great pitch</strong></li>
             <li> <strong> Expert advice based on thousands of pitches</strong></li>
         </ul>
+        
         <p class="sub-heading" style="color: black; text-align: center;">
 
 
@@ -263,24 +264,33 @@
                             
                             <span>An description addresing the need for the problem you are solving.</span>
                             <br>
-                            <small><i>Uber at outset would have answered :
-                                People need an available and immediate shuttle service but today the market is dominated by traditional taxi companies that offer heavy complicated service and long waiting times</i></small>
+                            <small><i>Company X would have answered :
+                                Showcasing our commitment to sustainability and innovation in agriculture.</i></small>
                             <textarea class="form-control wide-textarea w-100 text-field w-input"
                             placeholder="Please enter or edit your answer"
                             rows="4" cols="50" name="{{ 'user_input1' }}" required>{{ user_inputs.step1['input1'] }}</textarea>
 
                             <label for="userInput1" class="paragraph">What is the goal of your pitch?</label>
+                            <!-- <span>An description addresing the need for the problem you are solving.</span> -->
+                            <!-- <br> -->
+                            <small><i>Company X would have answered :
+                                To persuade controlled environment agriculture markets of the value and necessity of our sustainable solutions.</i></small>
                             <textarea class="form-control text-field w-input" rows="4"
                                                               placeholder="Please enter or edit your answer"
                                                               name="{{ 'user_input2' }}" required>{{ user_inputs.step1['input2'] }}</textarea>
 
                             <label for="userInput1" class="paragraph">What does your audience believe before the pitch?        	</label>
+                            <small><i>Company X would have answered :
+                                skepticism about sustainable solutions efficiency.</i></small>
                             <td>
                                 <textarea class="form-control text-field w-input" rows="4"
                                    placeholder="Please enter or edit your answer"
                                    name="{{ 'user_input3' }}" required>{{ user_inputs.step1['input3'] }}</textarea>
                             </td>
                             <label for="userInput1" class="paragraph">What should your audience  believe after the pitch?      (and Why)	</label>
+                            <small><i>Company X would have answered :
+                                conviction in our products' effectiveness and necessity.</i></small>
+                          
                             <td>
                                 <textarea class="form-control text-field w-input" rows="4"
                                    placeholder="Please enter or edit your answer"
@@ -306,7 +316,7 @@
                     </symbol>
                 </svg>
         
-
+                <h3>AI Feedback: Is the purpose of your pitch clear?</h3>
                 <div class="output">
                     <div id="response1">
                         <div class="lottie-animation" data-animation-type="lottie"

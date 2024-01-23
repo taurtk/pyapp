@@ -262,26 +262,31 @@
                             <label for="userInput1" class="paragraph">In one line, what is your pitch? 
                                 (this is usually your opening)</label>
                             
-                            <span>An description addresing the need for the problem you are solving.</span>
-                            <br>
-                            <small><i>Uber at outset would have answered :
-                                People need an available and immediate shuttle service but today the market is dominated by traditional taxi companies that offer heavy complicated service and long waiting times</i></small>
+                           
+                            <small><i>Company X would have answered :
+                                Revolutionizing controlled environment agriculture  with sustainable, technology-driven solutions</i></small>
                             <textarea class="form-control wide-textarea w-100 text-field w-input"
                             placeholder="Please enter or edit your answer"
                             rows="4" cols="50" name="{{ 'user_input1' }}" required>{{ user_inputs.step2['input1'] }}</textarea>
 
                             <label for="userInput1" class="paragraph">Up to 3 supporting arguments</label>
+                            <small><i>Company X would have answered :
+                                Demonstrated success in increasing crop yields sustainably.</i></small>
                             <textarea class="form-control text-field w-input" rows="4"
                                                               placeholder="Please enter or edit your answer"
                                                               name="{{ 'user_input2' }}" required>{{ user_inputs.step2['input2'] }}</textarea>
 
                             <label for="userInput1" class="paragraph">Argument 2       	</label>
+                            <small><i>Company X would have answered :
+                                Unique blend of technology and ecological responsibility.</i></small>
                             <td>
                                 <textarea class="form-control text-field w-input" rows="4"
                                    placeholder="Please enter or edit your answer"
                                    name="{{ 'user_input3' }}" required>{{ user_inputs.step2['input3'] }}</textarea>
                             </td>
                             <label for="userInput1" class="paragraph">Argument 3	</label>
+                            <small><i>Company X would have answered :
+                                Proven track record of revitalizing soils and enhancing plant growth</i></small>
                             <td>
                                 <textarea class="form-control text-field w-input" rows="4"
                                    placeholder="Please enter or edit your answer"
@@ -307,7 +312,7 @@
                     </symbol>
                 </svg>
         
-
+                <h3>AI Feedback: Is the purpose of your pitch clear?</h3>
                 <div class="output">
                     <div id="response1">
                         <div class="lottie-animation" data-animation-type="lottie"

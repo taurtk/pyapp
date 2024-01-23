@@ -261,23 +261,32 @@
 
                             <label for="userInput1" class="paragraph">Call to action (what after your pitch) -
                                 (1 Sentence)  [Try to include what they will be saying yes to in concrete terms]      	</label>
+                                <small><i>Company X would have answered :
+                                    Join us in transforming agriculture and gardening for a sustainable future.</i></small>
+                        
                             
-                            <span>An description addressing the need for the problem you are solving.</span>
-                            <br>
-                            <small><i>Uber at outset would have answered :
-                                People need an available and immediate shuttle service but today the market is dominated by traditional taxi companies that offer heavy complicated service and long waiting times</i></small>
                             <textarea class="form-control wide-textarea w-100 text-field w-input"
                             placeholder="Please enter or edit your answer"
                             rows="4" cols="50" name="{{ 'user_input1' }}" required>{{ user_inputs.step4['input1'] }}</textarea>
 
                             <label for="userInput1" class="paragraph">Why do this (up to 3 reasons)  Note: Include why do this Now        	</label>
+                            
+                            <small><i>Company X would have answered :
+                                1. The urgency of sustainable solutions in agriculture. 2. The proven effectiveness of our products.
+                                3. The opportunity to lead in a market driven by sustainability and innovation.
+                             </i></small>
+                            
                             <textarea class="form-control text-field w-input" rows="4"
                                                               placeholder="Please enter or edit your answer"
                                                               name="{{ 'user_input2' }}" required>{{ user_inputs.step4['input2'] }}</textarea>
 
                             <label for="userInput1" class="paragraph">Your last line
                                 What do they need to remember /do    	    	</label>
-                            <td>
+                            
+                        
+                                <small><i>Company X would have answered :
+                                    Together, we can nourish the world and protect our planet with every seed, every soil.</i></small>
+                                <td>
                                 <textarea class="form-control text-field w-input" rows="4"
                                    placeholder="Please enter or edit your answer"
                                    name="{{ 'user_input3' }}" required>{{ user_inputs.step4['input3'] }}</textarea>
@@ -302,7 +311,7 @@
                         <path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z" />
                     </symbol>
                 </svg>
-        
+                <h3>AI Feedback: Can anyone understand why they should take the action you are suggesting?</h3>
 
                 <div class="output">
                     <div id="response1">

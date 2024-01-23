@@ -14,10 +14,6 @@ app.secret_key = 'taurtk'
 
 openai.api_key = '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'
 
-def prompts_for_analysis():
-    prompts = [step1
-           ]
-    return prompts
 
 @app.route('/')
 def welcome():
@@ -25,23 +21,23 @@ def welcome():
 
 @app.route('/index')
 def index():
-    return render_template('index1.html', user_inputs=user_inputs)
+    return render_template('index1.html', user_inputs={'step1':{}})
 
 @app.route('/step1')
 def step1():
-   return render_template('step1.html', user_inputs=user_inputs)
+   return render_template('step1.html', user_inputs={'step2':{}})
 
 @app.route('/step2')
 def step2():
-    return render_template('step2.html', user_inputs=user_inputs)
+    return render_template('step2.html', user_inputs={'step3':{}})
 
 @app.route('/step3')
 def step3():
-    return render_template('step3.html', user_inputs=user_inputs)
+    return render_template('step3.html', user_inputs={'step4':{}})
 
 @app.route('/pitch')
 def pitch():
-    return render_template('pitch.html',user_inputs=user_inputs)
+    return render_template('pitch.html',user_inputs={})
 
 @app.route('/more')
 def more():
@@ -58,73 +54,51 @@ user_inputs = {
 
 @app.route('/generate_feedback',  methods=['GET', 'POST'])
 def generate_feedback():
-    # Define a list to store user inputs
     if request.method == 'POST':
-        # user_inputs.setdefault('step1', {})
-
-        # if 'user_inputs' not in session:
-        #     session['user_inputs'] = {}
-
-        # # cookies cache
-        # # session destroy krna hoga(invalid yha pr)
-        # # Update session with user inputs
-        # session['user_inputs']['step1'] = {
-        #     'input1': request.form.get('user_input1', ''),
-        #     'input2': request.form.get('user_input2', ''),
-        #     'input3': request.form.get('user_input3', ''),
-        #     'input4': request.form.get('user_input4', '')
-        # }
-
-
-    # Update 'step1' with user inputs
+        step = session.setdefault('step1', {})
         for i in range(1, 5):
             input_key = f'input{i}'
-            user_inputs['step1'][input_key] = request.form[f'user_input{i}']
-      
-        
+            step[input_key] = request.form[f'user_input{i}']
+            user_inputs['step1'][input_key] = step[input_key]
+
         step11 = f"""Here are some notes on a presentation we are preparing. We think people believe the following now
-        |{user_inputs['step1']['input3']} After our talk we want them to believe
-        |{user_inputs['step1']['input4']}
+        |{step['input3']} After our talk we want them to believe
+        |{step['input4']}
         The end objective of this pitch is
-        |{user_inputs['step1']['input2']} Is it clear or does it appear we have a clear objective for our presentation?
+        |{step['input2']} Is it clear or does it appear we have a clear objective for our presentation?
         Please start your reply with a simple yes|no|sort of 
     then a explanation of your reply along with suggestions to improve
         """
 
+        feedback = ""
         
-            # # Loop through prompts and get responses from ChatGPT
-        for prompt in prompts_for_analysis():
-                # Call OpenAI API
-            response = openai.ChatCompletion.create(
-                    model = "gpt-3.5-turbo",  # You can choose a different engine
-                    messages=[
+        response = openai.ChatCompletion.create(
+                model = "gpt-3.5-turbo",
+                messages=[
                     {"role": "user", "content": step11}
                 ],
-                    
-                )
-                # Append the response to the list
-            feedback =  response.choices[0]['message']['content']
-            print(step11)
-            # print(feedback)
+            )
+        feedback += response.choices[0]['message']['content']
+        session.modified = True
+        # Clear the session data
+        # del session['step1']
 
-            # session.modified = True
-
-        return render_template('index1.html', user_inputs=user_inputs, feedback=feedback)
+        return render_template('index1.html', user_inputs=session, feedback=feedback)
     else:
         return render_template('index1.html')
-
 
 @app.route('/generate_feedback1',  methods=['GET', 'POST'])
 def generate_feedback1():
     # Define a list to store user inputs
     if request.method == 'POST':
    
-        user_inputs.setdefault('step2', {})
+        step = session.setdefault('step2', {})
 
     # Update 'step1' with user inputs
         for i in range(1, 5):
             input_key = f'input{i}'
-            user_inputs['step2'][input_key] = request.form[f'user_input{i}']
+            step[input_key] = request.form[f'user_input{i}']
+            user_inputs['step2'][input_key] = step[input_key]
         # try:
     # Code that might raise a ZeroDivisionError    
         # pitch_input5 = user_input = user_inputs[0]
@@ -134,27 +108,25 @@ def generate_feedback1():
 
         step12 = f"""Here is the introduction of a pitch
         we are planning to make |
-        {user_inputs['step2']['input1']} by
-            {user_inputs['step2']['input2']} | {user_inputs['step2']['input3']}| {user_inputs['step2']['input4']} | 
+        {step['input1']} |
+           Argument1 {step['input2']} | Argument 2{step['input3']}| Argument 3{step['input4']} | 
             Is this introduction clear, compelling and interesting ?
         """
             # # Loop through prompts and get responses from ChatGPT
-        for prompt in prompts_for_analysis():
-                # Call OpenAI API
-            response = openai.ChatCompletion.create(
-                    model = "gpt-3.5-turbo",  # You can choose a different engine
-                    messages=[
+        feedback = ""
+        
+        response = openai.ChatCompletion.create(
+                model = "gpt-3.5-turbo",
+                messages=[
                     {"role": "user", "content": step12}
                 ],
-                    
-                )
-                # Append the response to the list
-            feedback =  response.choices[0]['message']['content']
-            print(feedback)
+            )
+        feedback += response.choices[0]['message']['content']
+        session.modified = True
 
 
             
-        return render_template('step1.html', user_inputs=user_inputs, feedback=feedback)
+        return render_template('step1.html', user_inputs=session, feedback=feedback)
     else:
        return render_template('step1.html')
 
@@ -163,9 +135,14 @@ def generate_feedback1():
 def generate_feedback2():
     # Define a list to store user inputs
     if request.method == 'POST':
+   
+        step = session.setdefault('step3', {})
+
+    # Update 'step1' with user inputs
         for i in range(1, 8):
             input_key = f'input{i}'
-            user_inputs['step3'][input_key] = request.form[f'user_input{i}']
+            step[input_key] = request.form[f'user_input{i}']
+            user_inputs['step3'][input_key] = step[input_key]
         # try:
     
 
@@ -174,85 +151,79 @@ def generate_feedback2():
 
         step21=f"""Here are 3 parts of a presenation we are are working on  
     We aim to solve this "problem' 
-    |{user_inputs['step3']['input1']}
+    |{step['input1']}
     The benefit we offer is |
-    |{user_inputs['step3']['input2']}
+    |{step['input2']}
     The reason to believe is | 
-    |{user_inputs['step3']['input3']} Is the problem 
+    |{step['input3']} Is the problem 
     , benefit and reasons to believe clear ?"""
 
             # # Loop through prompts and get responses from ChatGPT
-        for prompt in prompts_for_analysis():
-                # Call OpenAI API
-            response = openai.ChatCompletion.create(
-                    model = "gpt-3.5-turbo",  # You can choose a different engine
-                    messages=[
+        feedback = ""
+        
+        response = openai.ChatCompletion.create(
+                model = "gpt-3.5-turbo",
+                messages=[
                     {"role": "user", "content": step21}
                 ],
-                    
-                )
-                # Append the response to the list
-            feedback =  response.choices[0]['message']['content']
-            print(feedback)
+            )
+        feedback += response.choices[0]['message']['content']
+       
 
     
         step22=f"""Earlier we shared three parts 
     of a presentation. 
     These are | We aim to solve this 
-    "problem' |{user_inputs['step3']['input1']}
-    The benefit we offer is |{user_inputs['step3']['input2']}
-    The reason to believe is | {user_inputs['step3']['input3']}
+    "problem' |{step['input1']}
+    The benefit we offer is |{step['input2']}
+    The reason to believe is | {step['input3']}
     We want plan to make this promise to people
     |We want plan to make this promise to people
-    |{user_inputs['step3']['input5']} and profits from 
-    {user_inputs['step3']['input6']} Is this promise clear and 
+    |{step['input5']} and profits from 
+    {step['input6']} Is this promise clear and 
     compelling ?
     """
         step23=f"""
     Here are they key elements of our
     business pitch | PROBLEM -
     WHAT is the problem and for whom   
-    {user_inputs['step3']['input1']} PROMISE- In clear simple terms, 
+    {step['input1']} PROMISE- In clear simple terms, 
     what is the benefit you are offering       
-    {user_inputs['step3']['input2']} 
+    {step['input2']} 
     PROOF -3
     PAYOFF - Dramatic Difference (how their life 
                                 
     will be better/different)4 PAYOFF - Dramatic Difference 
     (how their life will be better/different)
-    {user_inputs['step3']['input5']}
+    {step['input5']}
     Based on this pitch is their clear evidence 
     this company could makea profit ?"""
         
         # # Loop through prompts and get responses from ChatGPT
-        for prompt in prompts_for_analysis():
-                # Call OpenAI API
-            response = openai.ChatCompletion.create(
-                    model = "gpt-3.5-turbo",  # You can choose a different engine
-                    messages=[
+        
+        
+        response = openai.ChatCompletion.create(
+                model = "gpt-3.5-turbo",
+                messages=[
                     {"role": "user", "content": step22}
                 ],
-                    
-                )
-                # Append the response to the list
-            feedback1 = response.choices[0]['message']['content']
-            print(feedback1)
+            )
+        feedback1 = response.choices[0]['message']['content']
             
-            for prompt in prompts_for_analysis():
-                # Call OpenAI API
-                response = openai.ChatCompletion.create(
-                        model = "gpt-3.5-turbo",  # You can choose a different engine
-                        messages=[
-                        {"role": "user", "content": step23}
-                    ],
-                        
-                    )
-            feedback2 = response.choices[0]['message']['content']
-            print(feedback2)
+          
+        
+        response = openai.ChatCompletion.create(
+                model = "gpt-3.5-turbo",
+                messages=[
+                    {"role": "user", "content": step23}
+                ],
+            )
+        feedback2 = response.choices[0]['message']['content']
+        session.modified = True
 
 
             
-        return render_template('step2.html', user_inputs=user_inputs,
+        return render_template('step2.html', user_inputs=session,
                                 feedback='Is the problem, unique selling point, reason to believe clear: \n'
                                 +feedback+'\n \n  Is there a compelling payoff \n 1.) :'
                                 +feedback1+"\n \n 2.)"+feedback2)
@@ -266,9 +237,15 @@ def generate_feedback2():
 def generate_feedback3():
     # Define a list to store user inputs
     if request.method == 'POST':
+   
+        step = session.setdefault('step4', {})
+
+    # Update 'step1' with user inputs
         for i in range(1, 4):
             input_key = f'input{i}'
-            user_inputs['step4'][input_key] = request.form[f'user_input{i}']
+            step[input_key] = request.form[f'user_input{i}']
+            user_inputs['step4'][input_key] = step[input_key]
+        # try:  user_inputs['step4'][input_key] = request.form[f'user_input{i}']
         # try:
     # Code that might raise a ZeroDivisionError    
         # pitch_input13 =user_input = user_inputs[0]
@@ -276,26 +253,25 @@ def generate_feedback3():
         
 
         step3= f"""This is what we want people to do at the end of this talk
-        | {user_inputs['step4']['input1']}
+        | {step['input1']}
         This is why they should do this 
-        |{user_inputs['step4']['input2']}
+        |{step['input2']}
             Can anyone understand why they should take this action ?"""
             # # Loop through prompts and get responses from ChatGPT
-        for prompt in prompts_for_analysis():
-                # Call OpenAI API
-            response = openai.ChatCompletion.create(
-                    model = "gpt-3.5-turbo",  # You can choose a different engine
-                    messages=[
+        feedback = ""
+        
+        response = openai.ChatCompletion.create(
+                model = "gpt-3.5-turbo",
+                messages=[
                     {"role": "user", "content": step3}
                 ],
-                    
-                )
-                # Append the response to the list
-            feedback =  response.choices[0]['message']['content']
-            print(feedback)
+            )
+        feedback += response.choices[0]['message']['content']
+        session.modified= True
+       
 
             
-        return render_template('step3.html', user_inputs=user_inputs, feedback=feedback)
+        return render_template('step3.html', user_inputs=session, feedback=feedback)
     else:
         return render_template('step3.html')
 
@@ -354,9 +330,9 @@ def generate_pitch():
             | note |
             Please remove placeholders from the final pitch"""
         # # Loop through prompts and get responses from ChatGPT
-    for prompt in prompts_for_analysis():
+    
             # Call OpenAI API
-        response = openai.ChatCompletion.create(
+    response = openai.ChatCompletion.create(
                 model = "gpt-3.5-turbo",  # You can choose a different engine
                 messages=[
                 {"role": "user", "content": pitch_prompt}
@@ -364,7 +340,7 @@ def generate_pitch():
                 
             )
             # Append the response to the list
-        feedback =  response.choices[0]['message']['content']
+    feedback =  response.choices[0]['message']['content']
         # print(feedback)
         # print('i amhere ',pitch_input1)
 
