@@ -12,7 +12,7 @@ app.secret_key = 'taurtk'
 
 
 
-openai.api_key = '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'
+openai.api_key = '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'
 
 
 @app.route('/')
